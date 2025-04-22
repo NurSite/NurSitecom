@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Коран — NurSite</title>
+  <!-- Шрифты и стили как в index.html -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-text: #111111;
+      --color-primary: #11999e;
+      --font-base: 'Inter', sans-serif;
+      --font-arabic: 'Noto Sans Arabic', sans-serif;
+    }
+    html.theme-light { --color-bg: #ffffff; --color-text: #111111; }
+    html.theme-dark  { --color-bg: #111111; --color-text: #f0f0f0; }
+    html { background: var(--color-bg); color: var(--color-text); font-family: var(--font-base); transition: .3s; }
+    body { margin:0; padding:0; }
+    header { padding:1rem; text-align:center; }
+    nav a { margin: 0 0.5rem; text-decoration:none; color: var(--color-text); font-weight:600; }
+    .theme-switcher { position:fixed; top:1rem; right:1rem; background:rgba(255,255,255,0.8); border-radius:.5rem; padding:.5rem; font-size:.875rem; }
+    .theme-switcher select { font-family: var(--font-base); }
+    main { max-width:800px; margin:5rem auto 2rem; padding:0 1rem; }
+    h1 { font-size:2rem; font-weight:800; margin-bottom:1rem; text-align:center; }
+    label { display:block; margin:1rem 0 .5rem; font-weight:600; }
+    select, input { width:100%; padding:.75rem; border:1px solid #ccc; border-radius:.375rem; font-size:1rem; }
+    .result { margin-top:2rem; }
+    .result ul { list-style:disc; margin-left:1.5rem; }
+  </style>
+</head>
+<body>
+  <div class="theme-switcher">
+    <select id="themeSelect">
+      <option value="system">Система (beta)</option>
+      <option value="light">Светлая</option>
+      <option value="dark">Тёмная</option>
+    </select>
+  </div>
+  <header>
+    <h1>Чтение Корана</h1>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="quran.html">Коран</a>
+      <a href="donate.html">Поддержка</a>
+      <a href="about.html">О нас</a>
+    </nav>
+  </header>
+  <main>
+    <label for="juzSelect">Выберите джуз:</label>
+    <select id="juzSelect" onchange="filterSurahs()">
+      <option value="">-- Все джузы --</option>
+    </select>
+    <label for="searchInput">Искать суру по названию:</label>
+    <input type="text" id="searchInput" placeholder="Например, Аль-Бакара" oninput="filterSurahs()">
+    <div class="result" id="result"></div>
+  </main>
+  <script>
+    // Theme switcher
+    const themeSelect = document.getElementById('themeSelect');
+    const root = document.documentElement;
+    function applyTheme(val) {
+      root.className = val==='light'? 'theme-light': val==='dark'? 'theme-dark': 'theme-system';
+      localStorage.setItem('nurTheme', val);
+    }
+    const saved = localStorage.getItem('nurTheme')||'system';
+    themeSelect.value = saved;
+    applyTheme(saved);
+    themeSelect.addEventListener('change', ()=>applyTheme(themeSelect.value));
+    // Data for filter
+    const data = [
+      { juz:1, surahs:["Аль-Фатиха","Аль-Бакара"] },{ juz:2, surahs:["Аль-Бакара"] },{ juz:3, surahs:["Аль-Бакара","Аль-Имран"] },
+      { juz:4, surahs:["Аль-Имран","Ан-Ниса"] },{ juz:5, surahs:["Ан-Ниса"] },{ juz:6, surahs:["Ан-Ниса","Аль-Маида"] },
+      { juz:7, surahs:["Аль-Маида","Аль-Ан'ам"] },{ juz:8, surahs:["Аль-Ан'ам","Аль-А'раф"] },{ juz:9, surahs:["Аль-А'раф","Аль-Анфаль"] },
+      { juz:10,surahs:["Аль-Анфаль","Ат-Тауба"] },{ juz:11,surahs:["Ат-Тауба","Юнус"] },{ juz:12,surahs:["Худ","Юсуф"] },
+      { juz:13,surahs:["Юсуф","Ар-Ра’д","Ибрахим"] },{ juz:14,surahs:["Аль-Хиджр","Ан-Нахль"] },{ juz:15,surahs:["Аль-Исра","Аль-Кахф"] },
+      { juz:16,surahs:["Аль-Кахф","Марьям","Та-Ха"] },{ juz:17,surahs:["Аль-Анбия","Аль-Хадж"] },{ juz:18,surahs:["Аль-Му’минун","Ан-Нур","Аль-Фуркан"] },
+      { juz:19,surahs:["Аль-Фуркан","Аш-Шуара"] },{ juz:20,surahs:["Ан-Намль","Аль-Касас"] },{ juz:21,surahs:["Аль-Касас","Аль-Анкабут"] },
+      { juz:22,surahs:["Аль-Анкабут","Ар-Рум","Лукман","Ас-Саджда","Аль-Ахзаб"] },
+      { juz:23,surahs:["Аль-Ахзаб","Саба","Фатыр","Ясин"] },{ juz:24,surahs:["Ясин","Ас-Саффат","Сад","Аз-Зумар"] },
+      { juz:25,surahs:["Аз-Зумар","Гафир"] },{ juz:26,surahs:["Фуссилат","Аш-Шура","Аз-Зухруф"] },
+      { juz:27,surahs:["Ад-Духан","Аль-Джасия","Аль-Ахкаф","Мухаммад","Аль-Фатх"] },
+      { juz:28,surahs:["Аль-Худжурат","Каф","Аз-Зарият","Ат-Тур","Ан-Наджм","Аль-Камар","Ар-Рахман","Аль-Ваки’а","Аль-Хадид"] },
+      { juz:29,surahs:["Аль-Муджадаля","Аль-Хашр","Аль-Мумтахана","Ас-Сафф","Аль-Джуму’а","Аль-Мунафикун","Ат-Тагабун","Ат-Талак","Ат-Тахрим"] },
+      { juz:30,surahs:["Аль-Мульк","Аль-Калям","Аль-Хакка","Аль-Ма’аридж","Нух","Аль-Джинн","Аль-Муззаммиль","Аль-Муддассир","Аль-Кийама","Аль-Инсан","Аль-Мурсалат","Ан-Наба","Ан-Нази’ат","Абаса","Ат-Таквир","Аль-Инфитар","Аль-Бурудж","Ат-Тарик","Аль-А'ля","Аль-Гашия","Аль-Фаджр","Аль-Балад","Аш-Шамс","Аль-Лайл","Ад-Духа","Аш-Шарх","Ат-Тин","Аль-Алак","Аль-Кадр","Аль-Баййина","Аз-Залзала","Аль-Адият","Аль-Кари’а","Ат-Такатур","Аль-Аср","Аль-Хумаза","Аль-Филь","Курейш","Аль-Маун","Аль-Каусар","Аль-Кафирун","Ан-Наср","Аль-Масад","Аль-Ихлас","Аль-Фалак","Ан-Нас"] }
+    ];
+    const juzSelect = document.getElementById('juzSelect');
+    const searchInput = document.getElementById('searchInput');
+    const resultDiv = document.getElementById('result');
+    for(let i=1;i<=30;i++){ let o=document.createElement('option'); o.value=i; o.textContent=`${i}-й джуз`; juzSelect.append(o);}    
+    function filterSurahs(){ const sj=parseInt(juzSelect.value); const q=searchInput.value.toLowerCase(); let out=''; data.forEach(it=>{ if(!sj||it.juz===sj){ const f=it.surahs.filter(s=>s.toLowerCase().includes(q)); if(f.length){ out+=`<strong>${it.juz}-й джуз:</strong><ul>`; f.forEach(s=>out+=`<li>${s}</li>`); out+='</ul>'; } }}); resultDiv.innerHTML = out||'<p>Ничего не найдено.</p>';} 
+    filterSurahs();
+  </script>
+</body>
+</html>
