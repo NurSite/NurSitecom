@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Избранные аяты — NurSite</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f6f6f6;
+      color: #222;
+    }
+    header {
+      background-color: #0a6847;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+    }
+    .ayah-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    .ayah-text {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .ayah-translation {
+      color: #555;
+    }
+    .clear-btn {
+      margin: 10px 0;
+      background-color: #db3d3d;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>Избранные аяты</header>
+  <div class="container">
+    <button class="clear-btn" onclick="clearFavorites()">Очистить избранное</button>
+    <div id="favoritesList">
+      <!-- Избранные аяты появятся здесь -->
+    </div>
+  </div>
+
+  <script>
+    function loadFavorites() {
+      const list = document.getElementById('favoritesList');
+      list.innerHTML = '';
+
+      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+      if (favorites.length === 0) {
+        list.innerHTML = '<p>У вас пока нет избранных аятов.</p>';
+        return;
+      }
+
+      favorites.forEach((ayah, index) => {
+        const card = document.createElement('div');
+        card.className = 'ayah-card';
+
+        card.innerHTML = `
+          <div class="ayah-text">${ayah.text}</div>
+          <div class="ayah-translation">${ayah.translation}</div>
+        `;
+
+        list.appendChild(card);
+      });
+    }
+
+    function clearFavorites() {
+      if (confirm('Вы уверены, что хотите удалить все избранные аяты?')) {
+        localStorage.removeItem('favorites');
+        loadFavorites();
+      }
+    }
+
+    // Загрузим избранное при открытии страницы
+    loadFavorites();
+  </script>
+</body>
+</html>
