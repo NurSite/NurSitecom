@@ -1,63 +1,94 @@
-<!DOCTYPE html><html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Вдохновляющие Дуа и Зикры — NurSite</title>
-  <link rel="stylesheet" href="ga.css">
-</head>
-<body>
-  <header>
-    <h1>Вдохновляющие Дуа и Зикры</h1>
-    <nav>
-      <a href="index.html">Главная</a>
-      <a href="daily.html">Аят дня</a>
-      <a href="favorites.html">Избранное</a>
-      <a href="ga.html">Вопрос-Ответ</a>
-      <a href="donate.html">Поддержка проекта</a>
-    </nav>
-  </header>  <main>
-    <section>
-      <h2>Дуа, укрепляющие сердце</h2>
-      <article>
-        <blockquote>
-          اللَّهُمَّ إِنِّي أَسْأَلُكَ الثَّبَاتَ فِي الْأَمْرِ، وَالْعَزِيمَةَ عَلَى الرُّشْدِ
-        </blockquote>
-        <p>«О Аллах, прошу Тебя стойкости в деле и решимости в следовании прямым путем»</p>
-      </article><article>
-    <blockquote>
-      رَبِّ اشْرَحْ لِي صَدْرِي * وَيَسِّرْ لِي أَمْرِي
-    </blockquote>
-    <p>«Господи! Раскрой мою грудь и облегчи мое дело» (Сура Та Ха, 25-26)</p>
-  </article>
-</section>
+/* ga.css — стили для страницы guran.html */
 
-<section>
-  <h2>Ежедневные Зикры</h2>
-  <ul>
-    <li><strong>СубханаЛлах</strong> — Пречист Аллах</li>
-    <li><strong>Альхамдулиллях</strong> — Хвала Аллаху</li>
-    <li><strong>Аллаху Акбар</strong> — Аллах Велик</li>
-    <li><strong>Ля иляха илля Ллах</strong> — Нет божества, кроме Аллаха</li>
-  </ul>
-</section>
+:root {
+  --color-bg: #ffffff;
+  --color-text: #111111;
+  --color-primary: #11999e;
+  --font-base: 'Inter', sans-serif;
+  --font-arabic: 'Noto Sans Arabic', sans-serif;
+}
 
-<section>
-  <h2>Твои любимые дуа?</h2>
-  <p>Напиши нам свои любимые дуа и зикры, и мы добавим их на сайт!</p>
-  <form name="dhikr-suggestions" method="POST" data-netlify="true">
-    <input type="hidden" name="form-name" value="dhikr-suggestions">
-    <label>Твое имя:
-      <input type="text" name="name" required>
-    </label>
-    <label>Дуа или Зикр:
-      <textarea name="content" required></textarea>
-    </label>
-    <button type="submit">Отправить</button>
-  </form>
-</section>
+html.theme-light {
+  --color-bg: #ffffff;
+  --color-text: #111111;
+}
 
-  </main>  <footer>
-    <p>&copy; 2025 NurSite. Все права защищены.</p>
-  </footer>
-</body>
-</html>
+html.theme-dark {
+  --color-bg: #111111;
+  --color-text: #f0f0f0;
+}
+
+html {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-base);
+  transition: 0.3s;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  padding: 1rem;
+  text-align: center;
+}
+
+nav a {
+  margin: 0 0.5rem;
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.theme-switcher {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.theme-switcher select {
+  font-family: var(--font-base);
+}
+
+main {
+  max-width: 800px;
+  margin: 5rem auto 2rem;
+  padding: 0 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  font-weight: 600;
+}
+
+select,
+input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+}
+
+.result {
+  margin-top: 2rem;
+}
+
+.result ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+}
