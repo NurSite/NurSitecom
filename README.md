@@ -25,11 +25,4 @@
 - **Netlify** — хостинг и автоматический деплой
 - **Google Fonts** — для поддержки арабского шрифта
 
----
-
-## Запуск проекта локально
-
-```bash
-git clone https://github.com/ваш-профиль/nursite.git
-cd nursite
-# Просто откройте index.html в браузере 
+--- 
