@@ -143,3 +143,47 @@ section.intro a {
   text-decoration: none;
   font-weight: 600;
 }
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  scroll-behavior: smooth;
+  padding-bottom: 60px; /* чтобы контент не прятался за нижним меню */
+}
+
+#quran {
+  padding: 20px;
+}
+
+#surah-list {
+  list-style: none;
+  padding: 0;
+}
+
+#surah-list li {
+  margin: 8px 0;
+}
+
+#surah-list a {
+  text-decoration: none;
+  color: #1a73e8;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: #f0f0f0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #ccc;
+}
+
+.bottom-nav a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
