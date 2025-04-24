@@ -26,4 +26,9 @@ fetch('full_quran.json')
       container.appendChild(surahDiv);
     });
   });
-<button class="add-fav">Добавить в избранное</button>
+addFavBtn.addEventListener("click", () => {
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  favorites.push({ surahIndex: index, ayahIndex: ayahIndex });
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+  alert("Добавлено в избранное!");
+});
