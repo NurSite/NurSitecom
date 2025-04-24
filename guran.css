@@ -75,3 +75,15 @@ header {
   text-decoration: none;
   font-weight: bold;
 }
+
+.tafsir {
+  background: #f9f9f9;
+  margin-top: 5px;
+  padding: 10px;
+  border-left: 3px solid #ccc;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.hidden {
+  display: none;
+} 
