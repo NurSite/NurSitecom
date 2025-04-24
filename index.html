@@ -1,11 +1,53 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NurSite — Свет знаний Корана</title>
-  <!-- Шрифты: подобраны по стилю guran.com -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
-    
-      
+</head>
+<body>
+  <header>
+    <h1>NurSite</h1>
+  </header>  <main>
+    <section class="hero-simple">
+      <h2>Свет знаний Корана</h2>
+      <p>Изучайте аяты, переводы и тафсиры в одном месте</p>
+      <div class="buttons">
+        <a href="#suras" class="btn">Коран</a>
+        <a href="donate.html" class="btn">Поддержать проект</a>
+      </div>
+    </section><section class="intro">
+  <h2>О нас</h2>
+  <p><a href="about.html">Перейти на страницу о проекте</a></p>
+</section>
+
+<section id="suras" class="suras">
+  <h2>Суры Корана</h2>
+  <ul class="sura-list">
+    <!-- Сюда можно вставить генерацию 1-114 сур -->
+    <!-- Пример -->
+    <li><a href="quran.html#1">1. Аль-Фатиха — Открывающая</a></li>
+    <li><a href="quran.html#2">2. Аль-Бакара — Корова</a></li>
+    <!-- и т.д. до 114 -->
+  </ul>
+</section>
+
+  </main>  <footer>
+    <nav class="bottom-nav">
+      <a href="index.html">Главная</a>
+      <a href="search.html">Поиск</a>
+      <a href="settings.html">Настройки</a>
+    </nav>
+    <div class="social-links">
+      <a href="https://t.me/vuittonere" target="_blank"><img src="icons/telegram.svg" alt="Telegram"></a>
+      <a href="https://t.me/vuittonere" target="_blank"><img src="icons/youtube.svg" alt="YouTube"></a>
+      <a href="https://t.me/vuittonere" target="_blank"><img src="icons/tiktok.svg" alt="TikTok"></a>
+    </div>
+  </footer>  <script>
+    document.querySelector('a[href="#suras"]').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('suras').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script></body>
+</html>
