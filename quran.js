@@ -26,3 +26,4 @@ fetch('full_quran.json')
       container.appendChild(surahDiv);
     });
   });
+<button class="add-fav">Добавить в избранное</button>
