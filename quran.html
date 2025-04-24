@@ -1,77 +1,50 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Коран — NurSite</title>
-  <!-- Шрифты как на guran.com -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Внешний CSS для стилей страницы Коран -->
-  <link rel="stylesheet" href="guran.css">
+  <link rel="stylesheet" href="quran.css" />
 </head>
 <body>
-  <div class="theme-switcher">
-    <select id="themeSelect">
-      <option value="system">Система (beta)</option>
-      <option value="light">Светлая</option>
-      <option value="dark">Тёмная</option>
-    </select>
-  </div>  <header>
-    <h1>Чтение Корана</h1>
-    <nav>
-      <a href="index.html">Главная</a>
-      <a href="quran.html">Коран</a>
-      <a href="donate.html">Поддержка</a>
-      <a href="about.html">О нас</a>
-    </nav>
-  </header>  <main>
-    <label for="juzSelect">Выберите джуз:</label>
-    <select id="juzSelect" onchange="filterSurahs()">
-      <option value="">-- Все джузы --</option>
-    </select>
-    <label for="searchInput">Искать суру по названию:</label>
-    <input type="text" id="searchInput" placeholder="Например, Аль-Бакара" oninput="filterSurahs()">
-    <div class="result" id="result"></div>
-  </main>  <script>
-    // Theme switcher
-    const themeSelect = document.getElementById('themeSelect');
-    const root = document.documentElement;
-    function applyTheme(val) {
-      root.className = val==='light'? 'theme-light': val==='dark'? 'theme-dark': 'theme-system';
-      localStorage.setItem('nurTheme', val);
-    }
-    const saved = localStorage.getItem('nurTheme')||'system';
-    themeSelect.value = saved;
-    applyTheme(saved);
-    themeSelect.addEventListener('change', ()=>applyTheme(themeSelect.value));
 
-    // Data for filter
-    const data = [ /* ...данные джузов и сур... */ ];
-    const juzSelect = document.getElementById('juzSelect');
-    const searchInput = document.getElementById('searchInput');
-    const resultDiv = document.getElementById('result');
-    for(let i=1;i<=30;i++){
-      let opt=document.createElement('option');
-      opt.value=i;
-      opt.textContent=`${i}-й джуз`;
-      juzSelect.append(opt);
-    }
-    function filterSurahs(){
-      const sj=parseInt(juzSelect.value);
-      const q=searchInput.value.toLowerCase();
-      let out='';
-      data.forEach(it=>{
-        if(!sj||it.juz===sj){
-          const f=it.surahs.filter(s=>s.toLowerCase().includes(q));
-          if(f.length){
-            out+=`<strong>${it.juz}-й джуз:</strong><ul>`;
-            f.forEach(s=>out+=`<li>${s}</li>`);
-            out+='</ul>';
-          }
-        }
+  <header>
+    <h1>Суры Корана</h1>
+  </header>
+
+  <main id="quran-content">
+    <script>
+      const surahs = [
+        "Аль-Фатиха", "Аль-Бакара", "Аль-Имран", "Ан-Ниса", "Аль-Маида", "Аль-Ан’ам", "Аль-А’раф", "Аль-Анфаль", "Ат-Тауба", "Юнус",
+        "Худ", "Юсуф", "Ар-Ра’д", "Ибрахим", "Аль-Хиджр", "Ан-Нахль", "Аль-Исра", "Аль-Кахф", "Марьям", "Та-Ха",
+        "Аль-Анбийа", "Аль-Хадж", "Аль-Му’минун", "Ан-Нур", "Аль-Фуркан", "Аш-Шуара", "Ан-Намль", "Аль-Касас", "Аль-Анкабут", "Ар-Рум",
+        "Лукман", "Ас-Саджда", "Аль-Ахзаб", "Саба", "Фатыр", "Йа-Син", "Ас-Саффат", "Сад", "Аз-Зумар", "Гафир",
+        "Фуссилат", "Аш-Шура", "Аз-Зухруф", "Ад-Духан", "Аль-Джасия", "Аль-Ахкаф", "Мухаммад", "Аль-Фатх", "Аль-Худжурат", "Каф",
+        "Аз-Зарият", "Ат-Тур", "Ан-Наджм", "Аль-Камар", "Ар-Рахман", "Аль-Ваки’а", "Аль-Хадид", "Аль-Муджадала", "Аль-Хашр", "Аль-Мумтахина",
+        "Ас-Сафф", "Аль-Джуму’а", "Аль-Мунафикун", "Ат-Тагабун", "Ат-Талак", "Ат-Тахрим", "Аль-Мульк", "Аль-Калам", "Аль-Хакка", "Аль-Ма’аридж",
+        "Нух", "Аль-Джинн", "Аль-Муззаммиль", "Аль-Муддаттир", "Аль-Кияма", "Аль-Инсан", "Аль-Мурсалат", "Ан-Наба", "Ан-Нази’ат", "Абаса",
+        "Ат-Таквир", "Аль-Инфитар", "Аль-Мутаффифин", "Аль-Иншикак", "Аль-Бурудж", "Ат-Тарик", "Аль-А’ля", "Аль-Гашия", "Аль-Фаджр", "Аль-Балад",
+        "Аш-Шамс", "Аль-Лейл", "Ад-Духа", "Аш-Шарх", "Ат-Тин", "Аль-Алак", "Аль-Кадр", "Аль-Баййина", "Аз-Залзала", "Аль-Адият",
+        "Аль-Кари’а", "Ат-Такасуру", "Аль-Аср", "Аль-Хумаза", "Аль-Филь", "Курайш", "Аль-Ма’ун", "Аль-Каусар", "Аль-Кафирун", "Ан-Наср",
+        "Аль-Масад", "Аль-Ихлас", "Аль-Фалак", "Ан-Нас"
+      ];
+
+      const content = document.getElementById("quran-content");
+      surahs.forEach((surah, i) => {
+        const div = document.createElement("div");
+        div.id = `surah-${i + 1}`;
+        div.className = "surah-block";
+        div.innerHTML = `<h2>${i + 1}. ${surah}</h2><p>Текст суры будет добавлен здесь...</p>`;
+        content.appendChild(div);
       });
-      resultDiv.innerHTML = out||'<p>Ничего не найдено.</p>';
-    }
-    filterSurahs();
-  </script></body>
+    </script>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="index.html">Главное</a>
+    <a href="#top">Вверх</a>
+    <a href="nastroi.html">Настройка</a>
+  </nav>
+
+</body>
 </html>
