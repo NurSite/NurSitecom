@@ -1,53 +1,54 @@
 <!DOCTYPE html><html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NurSite — Свет знаний Корана</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NurSite - Главная</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <h1>NurSite</h1>
-  </header>  <main>
-    <section class="hero-simple">
-      <h2>Свет знаний Корана</h2>
-      <p>Изучайте аяты, переводы и тафсиры в одном месте</p>
-      <div class="buttons">
-        <a href="#suras" class="btn">Коран</a>
-        <a href="donate.html" class="btn">Поддержать проект</a>
-      </div>
-    </section><section class="intro">
-  <h2>О нас</h2>
-  <p><a href="about.html">Перейти на страницу о проекте</a></p>
-</section>
+  <!-- Верхняя панель -->
+  <header class="top-bar">
+    <a href="register.html" class="register-btn">Регистрация</a>
+    <div class="user-icon">👤</div>
+  </header>  <!-- Главный контент -->  <main>
+    <section class="intro">
+      <h1>Добро пожаловать в NurSite</h1>
+      <p>Изучайте ислам удобно и современно.</p>
+    </section><!-- Кнопка для прокрутки к Корану -->
+<button onclick="scrollToQuran()" class="scroll-btn">Коран</button>
 
-<section id="suras" class="suras">
-  <h2>Суры Корана</h2>
+<!-- Блок с Кораном -->
+<section id="quran">
+  <h2>Суры</h2>
   <ul class="sura-list">
-    <!-- Сюда можно вставить генерацию 1-114 сур -->
-    <!-- Пример -->
-    <li><a href="quran.html#1">1. Аль-Фатиха — Открывающая</a></li>
-    <li><a href="quran.html#2">2. Аль-Бакара — Корова</a></li>
-    <!-- и т.д. до 114 -->
+    <!-- Автоматически добавим все 114 сур -->
+    <!-- JS ниже сгенерирует -->
   </ul>
 </section>
 
-  </main>  <footer>
-    <nav class="bottom-nav">
-      <a href="index.html">Главная</a>
-      <a href="search.html">Поиск</a>
-      <a href="settings.html">Настройки</a>
-    </nav>
-    <div class="social-links">
-      <a href="https://t.me/vuittonere" target="_blank"><img src="icons/telegram.svg" alt="Telegram"></a>
-      <a href="https://t.me/vuittonere" target="_blank"><img src="icons/youtube.svg" alt="YouTube"></a>
-      <a href="https://t.me/vuittonere" target="_blank"><img src="icons/tiktok.svg" alt="TikTok"></a>
-    </div>
-  </footer>  <script>
-    document.querySelector('a[href="#suras"]').addEventListener('click', (e) => {
-      e.preventDefault();
-      document.getElementById('suras').scrollIntoView({ behavior: 'smooth' });
-    });
+<!-- Социальные сети -->
+<section class="social">
+  <a href="https://t.me/vuittonere"><img src="TikTok_logo.jpg" alt="TikTok" /></a>
+  <a href="https://t.me/vuittonere"><img src="Telegram_icon.png" alt="Telegram" /></a>
+  <a href="https://t.me/vuittonere"><img src="Youtube_icon.png" alt="YouTube" /></a>
+</section>
+
+  </main>  <!-- Нижнее фиксированное меню -->  <nav class="bottom-nav">
+    <a href="index.html">Главное</a>
+    <a href="quran.html">Коран</a>
+    <a href="nastroi.html">Настройки</a>
+  </nav>  <script>
+    // Прокрутка к Корану
+    function scrollToQuran() {
+      document.getElementById('quran').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Генерация списка сур
+    const suraList = document.querySelector('.sura-list');
+    for (let i = 1; i <= 114; i++) {
+      const item = document.createElement('li');
+      item.innerHTML = `<a href="quran.html#sura${i}">Сура ${i}</a>`;
+      suraList.appendChild(item);
+    }
   </script></body>
 </html>
