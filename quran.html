@@ -45,6 +45,41 @@
     <a href="#top">Вверх</a>
     <a href="nastroi.html">Настройка</a>
   </nav>
+<main id="quran-content"></main>
+
+<script>
+  fetch('quran.json')
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById('quran-content');
+      data.surahs.forEach(surah => {
+        const surahBlock = document.createElement('div');
+        surahBlock.className = 'surah-block';
+        surahBlock.innerHTML = `<h2 id="surah-${surah.id}">${surah.id}. ${surah.name}</h2>`;
+        
+        surah.ayahs.forEach((ayah, index) => {
+          const ayahDiv = document.createElement('div');
+          ayahDiv.className = 'ayah';
+          ayahDiv.innerHTML = `
+            <p><strong>${index + 1}.</strong> ${ayah.text}</p>
+            <p class="translation">${ayah.translation}</p>
+            <button class="tafsir-toggle">Посмотреть Тафсир</button>
+            <div class="tafsir hidden">${ayah.tafsir}</div>
+          `;
+          surahBlock.appendChild(ayahDiv);
+        });
+
+        container.appendChild(surahBlock);
+      });
+
+      document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('tafsir-toggle')) {
+          const tafsir = e.target.nextElementSibling;
+          tafsir.classList.toggle('hidden');
+        }
+      });
+    });
+</script>
 
 </body>
 </html>
