@@ -2,73 +2,53 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NurSite — Главная</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Азкары (Зикры)</title>
+  <link rel="stylesheet" href="dhikr.css" />
 </head>
 <body>
-  <header>
-    <h1>Добро пожаловать на NurSite</h1>
-    <nav>
-      <a href="index.html">Главная</a>
-      <a href="guran.html">Коран</a>
-      <a href="donate.html">Поддержка проекта</a>
-      <a href="about.html">О нас</a>
-      <a href="daily.html">Аят дня</a>
-      <a href="favorites.html">Избранное</a>
-      <a href="ga.html">Вопрос-Ответ</a>
-      <a href="dhikr.html">Дуа и зикры</a>
-    </nav>
-  </header>  <main>
-    <section id="intro">
-      <h2>Исламский свет знаний</h2>
-      <p>Изучайте Коран, читайте тафсиры, вдохновляйтесь хадисами и укрепляйте веру вместе с NurSite.</p>
-    </section><!-- Счётчик дней -->
-<div id="streakBox" style="padding: 10px; background-color: #e0f2f1; border-radius: 10px; text-align: center; margin: 20px auto; max-width: 500px;">
-  <strong id="streakMessage" style="font-size: 18px;"></strong>
-</div>
+  <section id="dhikr-container">
+    <h1>Славь Аллаха</h1>
 
-<section>
-  <h3>Что вы найдете на NurSite:</h3>
-  <ul>
-    <li>Полный Коран с переводом</li>
-    <li>Тафсиры от известных ученых</li>
-    <li>Хадисы и сунна</li>
-    <li>Мотивация и зикры</li>
-    <li>Вопрос-ответ по Исламу</li>
-  </ul>
-</section>
+    <div class="dhikr-card">
+      <p class="arabic">سُبْحَانَ اللَّهِ</p>
+      <p class="translation">Пречист Аллах</p>
+      <p class="repeat-count">Повторено: <span id="counter">0</span></p>
 
-  </main>  <footer>
-    <p>&copy; 2025 NurSite. Все права защищены.</p>
-  </footer>  <script>
-    function getTodayDateString() {
-      const today = new Date();
-      return today.toISOString().split('T')[0];
+      <div class="buttons">
+        <button onclick="incrementCounter()">+1</button>
+        <button onclick="resetCounter()">Сброс</button>
+        <button onclick="copyDhikr()">Скопировать</button>
+        <a class="share-btn" id="share-btn" target="_blank">Поделиться</a>
+      </div>
+      <p id="copied-msg" class="hidden">Скопировано!</p>
+    </div>
+  </section>
+
+  <script>
+    let count = 0;
+    const text = `سُبْحَانَ اللَّهِ\nПречист Аллах`;
+
+    function incrementCounter() {
+      count++;
+      document.getElementById("counter").textContent = count;
     }
 
-    const lastVisit = localStorage.getItem('lastVisit');
-    const streak = parseInt(localStorage.getItem('visitStreak')) || 0;
-    const today = getTodayDateString();
-
-    if (!lastVisit) {
-      localStorage.setItem('lastVisit', today);
-      localStorage.setItem('visitStreak', 1);
-    } else {
-      const lastDate = new Date(lastVisit);
-      const todayDate = new Date(today);
-      const diff = Math.floor((todayDate - lastDate) / (1000 * 60 * 60 * 24));
-
-      if (diff === 1) {
-        localStorage.setItem('visitStreak', streak + 1);
-      } else if (diff > 1) {
-        localStorage.setItem('visitStreak', 1);
-      }
-      localStorage.setItem('lastVisit', today);
+    function resetCounter() {
+      count = 0;
+      document.getElementById("counter").textContent = count;
     }
 
-    const currentStreak = localStorage.getItem('visitStreak');
-    const message = `Маша Аллах! Вы получаете знания уже ${currentStreak} ${currentStreak == 1 ? 'день' : (currentStreak < 5 ? 'дня' : 'дней')} подряд.`;
-    document.getElementById('streakMessage').textContent = message;
-  </script></body>
+    function copyDhikr() {
+      navigator.clipboard.writeText(text).then(() => {
+        const msg = document.getElementById("copied-msg");
+        msg.classList.remove("hidden");
+        setTimeout(() => msg.classList.add("hidden"), 2000);
+      });
+    }
+
+    document.getElementById("share-btn").href =
+      `https://t.me/share/url?url=${encodeURIComponent('https://nursite.github.io/NurSitecom')}&text=${encodeURIComponent(text)}`;
+  </script>
+</body>
 </html>
