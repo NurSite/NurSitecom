@@ -1,125 +1,38 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Аят дня — NurSite</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f4fdf6;
-      color: #222;
-      margin: 0;
-      padding: 20px;
-    }
-    .card {
-      background-color: #ffffff;
-      border-radius: 10px;
-      padding: 20px;
-      max-width: 700px;
-      margin: auto;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    h1 {
-      text-align: center;
-      color: #157347;
-    }
-    .ayah {
-      font-size: 1.5em;
-      font-weight: bold;
-      margin: 20px 0;
-    }
-    .translation, .tafsir {
-      margin-bottom: 15px;
-    }
-    button {
-      margin: 5px;
-      padding: 10px 15px;
-      border: none;
-      background-color: #157347;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #105c38;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Аят дня</title>
+  <link rel="stylesheet" href="daily.css">
 </head>
 <body>
-  <div class="card">
-    <h1>Аят дня</h1>
-    <p id="ayahText" class="ayah">Загрузка...</p>
-    <p id="translation" class="translation"></p>
-    <p id="tafsir" class="tafsir"></p>
+  <section id="daily-ayah">
+    <h2>Слон (105:4)</h2>
+    <p class="arabic">تَرْمِيهِم بِحِجَارَةٍۢ مِّن سِجِّيلٍۢ ٤</p>
+    <p class="translation">Они бросали в них каменья из обожженной глины</p>
+    <p class="translator">— Русский перевод (Кулиева)</p>
 
-    <div class="share-section">
-      <p class="text-lg font-semibold mb-2">Поделиться:</p>
-      <button onclick="shareWhatsApp()">WhatsApp</button>
-      <button onclick="shareTelegram()">Telegram</button>
+    <div class="buttons">
       <button onclick="copyToClipboard()">Скопировать</button>
+      <a class="share-btn" target="_blank" id="telegram-share">Telegram</a>
+      <a class="share-btn" target="_blank" id="whatsapp-share">WhatsApp</a>
     </div>
-
-    <div style="margin-top: 15px;">
-      <button onclick="addToFavorites()">Добавить в избранное</button>
-    </div>
-  </div>
+    <p id="copied-msg" class="hidden">Скопировано!</p>
+  </section>
 
   <script>
-    const ayatList = [
-      {
-        text: "إِنَّ مَعَ الْعُسْرِ يُسْرًا",
-        translation: "Воистину, с трудностью приходит облегчение. (Сура 94:6)",
-        tafsir: "Аллах напоминает, что за испытанием обязательно приходит облегчение, и это должно вдохновлять верующего."
-      },
-      {
-        text: "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ",
-        translation: "Аллах — нет божества, кроме Него, Живой, Вечный. (Сура 2:255)",
-        tafsir: "Это начало Аятуль-Курси, один из самых возвышенных аятов Корана, подчеркивающий единственность и могущество Аллаха."
-      },
-      {
-        text: "وَقُل رَّبِّ زِدْنِي عِلْمًا",
-        translation: "Скажи: Господи, приумножь мои знания. (Сура 20:114)",
-        tafsir: "Мольба пророка Мусы (мир ему) — прекрасный пример стремления к знанию и развитию веры."
-      }
-    ];
+    const shareText = `Слон (105:4)\n\nتَرْمِيهِم بِحِجَارَةٍۢ مِّن سِجِّيلٍۢ ٤\n\nОни бросали в них каменья из обожженной глины\n— Русский перевод (Кулиева)\n\nhttps://nursite.github.io/NurSitecom/nastroi.html`;
 
-    const today = new Date();
-    const index = today.getDate() % ayatList.length;
-    const ayah = ayatList[index];
-
-    document.getElementById("ayahText").innerText = ayah.text;
-    document.getElementById("translation").innerText = ayah.translation;
-    document.getElementById("tafsir").innerText = ayah.tafsir;
-
-    function shareWhatsApp() {
-      const message = document.getElementById("ayahText").innerText + "\n" + document.getElementById("translation").innerText;
-      const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
-      window.open(url, '_blank');
-    }
-
-    function shareTelegram() {
-      const message = document.getElementById("ayahText").innerText + "\n" + document.getElementById("translation").innerText;
-      const url = `https://t.me/share/url?url=&text=${encodeURIComponent(message)}`;
-      window.open(url, '_blank');
-    }
+    document.getElementById("telegram-share").href = `https://t.me/share/url?url=${encodeURIComponent("https://nursite.github.io/NurSitecom/nastroi.html")}&text=${encodeURIComponent(shareText)}`;
+    document.getElementById("whatsapp-share").href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
 
     function copyToClipboard() {
-      const text = document.getElementById("ayahText").innerText + "\n" + document.getElementById("translation").innerText;
-      navigator.clipboard.writeText(text);
-      alert("Скопировано!");
-    }
-
-    function addToFavorites() {
-      const ayah = document.getElementById("ayahText").innerText + "\n" + document.getElementById("translation").innerText;
-      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-      if (!favorites.includes(ayah)) {
-        favorites.push(ayah);
-        localStorage.setItem("favorites", JSON.stringify(favorites));
-        alert("Добавлено в избранное!");
-      } else {
-        alert("Этот аят уже в избранном.");
-      }
+      navigator.clipboard.writeText(shareText).then(() => {
+        const msg = document.getElementById("copied-msg");
+        msg.classList.remove("hidden");
+        setTimeout(() => msg.classList.add("hidden"), 2000);
+      });
     }
   </script>
 </body>
