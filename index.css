@@ -1,189 +1,41 @@
 :root {
-  --color-bg: #ffffff;
-  --color-text: #111111;
-  --color-primary: #11999e;
-  --font-base: 'Inter', sans-serif;
-  --font-arabic: 'Noto Sans Arabic', sans-serif;
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --accent: #00796b;
 }
 
-html.theme-light {
-  --color-bg: #ffffff;
-  --color-text: #111111;
-}
-html.theme-dark {
-  --color-bg: #111111;
-  --color-text: #f0f0f0;
-}
-html.theme-system {
-  color-scheme: light dark;
-}
-
-html {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-base);
-  transition: background 0.3s, color 0.3s;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-}
-
-header {
-  text-align: center;
-  padding: 1rem;
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  padding: 0.5rem 0;
-}
-
-nav a {
-  text-decoration: none;
-  color: var(--color-text);
-  font-weight: 600;
-}
-
-.hero {
-  padding: 3rem 1rem;
-  text-align: center;
-  background-color: var(--color-primary);
-  color: #fff;
-}
-
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.btn {
-  background-color: #ffffff;
-  color: var(--color-primary);
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.375rem;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.2s;
-}
-
-.btn:hover {
-  background-color: #eeeeee;
-}
-
-main {
-  max-width: 800px;
-  margin: auto;
-  padding: 2rem 1rem;
-}
-
-section.intro {
-  text-align: center;
-}
-
-section.intro a {
-  color: var(--color-primary);
-  text-decoration: underline;
-}
-
-.surah-list {
-  padding: 2rem 1rem;
-  background: #f9f9f9;
-}
-
-.surah-list h2 {
-  text-align: center;
-}
-
-.surah-item {
-  margin: 0.5rem 0;
-  text-align: center;
-}
-
-.footer {
-  padding: 1rem;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #777;
-}
-
-.footer a {
-  margin: 0 0.5rem;
-}
-
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: var(--color-bg);
-  border-top: 1px solid #ccc;
-  display: flex;
-  justify-content: space-around;
-  padding: 0.5rem 0;
-}
-
-.bottom-nav a {
-  color: var(--color-text);
-  text-decoration: none;
-  font-weight: 600;
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #f5f5f5;
+  --accent: #80cbc4;
 }
 
 body {
   margin: 0;
   font-family: sans-serif;
-  scroll-behavior: smooth;
-  padding-bottom: 60px; /* чтобы контент не прятался за нижним меню */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+  padding: 2rem;
 }
 
-#quran {
-  padding: 20px;
-}
-
-#surah-list {
-  list-style: none;
-  padding: 0;
-}
-
-#surah-list li {
-  margin: 8px 0;
-}
-
-#surah-list a {
-  text-decoration: none;
-  color: #1a73e8;
-}
-
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50px;
-  background: #f0f0f0;
+header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  border-top: 1px solid #ccc;
+  flex-wrap: wrap;
 }
 
-.bottom-nav a {
-  color: #333;
-  text-decoration: none;
-  font-weight: bold;
+.theme-switcher button {
+  margin: 0.3rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--accent);
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.theme-switcher button:hover {
+  opacity: 0.9;
 }
