@@ -1,54 +1,43 @@
-<!DOCTYPE html><html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NurSite - Главная</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <!-- Верхняя панель -->
-  <header class="top-bar">
-    <a href="register.html" class="register-btn">Регистрация</a>
-    <div class="user-icon">👤</div>
-  </header>  <!-- Главный контент -->  <main>
-    <section class="intro">
-      <h1>Добро пожаловать в NurSite</h1>
-      <p>Изучайте ислам удобно и современно.</p>
-    </section><!-- Кнопка для прокрутки к Корану -->
-<button onclick="scrollToQuran()" class="scroll-btn">Коран</button>
+body {
+  margin: 0;
+  font-family: sans-serif;
+  scroll-behavior: smooth;
+  padding-bottom: 60px; /* чтобы контент не прятался за нижним меню */
+}
 
-<!-- Блок с Кораном -->
-<section id="quran">
-  <h2>Суры</h2>
-  <ul class="sura-list">
-    <!-- Автоматически добавим все 114 сур -->
-    <!-- JS ниже сгенерирует -->
-  </ul>
-</section>
+#quran {
+  padding: 20px;
+}
 
-<!-- Социальные сети -->
-<section class="social">
-  <a href="https://t.me/vuittonere"><img src="TikTok_logo.jpg" alt="TikTok" /></a>
-  <a href="https://t.me/vuittonere"><img src="Telegram_icon.png" alt="Telegram" /></a>
-  <a href="https://t.me/vuittonere"><img src="Youtube_icon.png" alt="YouTube" /></a>
-</section>
+#surah-list {
+  list-style: none;
+  padding: 0;
+}
 
-  </main>  <!-- Нижнее фиксированное меню -->  <nav class="bottom-nav">
-    <a href="index.html">Главное</a>
-    <a href="quran.html">Коран</a>
-    <a href="nastroi.html">Настройки</a>
-  </nav>  <script>
-    // Прокрутка к Корану
-    function scrollToQuran() {
-      document.getElementById('quran').scrollIntoView({ behavior: 'smooth' });
-    }
+#surah-list li {
+  margin: 8px 0;
+}
 
-    // Генерация списка сур
-    const suraList = document.querySelector('.sura-list');
-    for (let i = 1; i <= 114; i++) {
-      const item = document.createElement('li');
-      item.innerHTML = `<a href="quran.html#sura${i}">Сура ${i}</a>`;
-      suraList.appendChild(item);
-    }
-  </script></body>
-</html>
+#surah-list a {
+  text-decoration: none;
+  color: #1a73e8;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: #f0f0f0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #ccc;
+}
+
+.bottom-nav a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
