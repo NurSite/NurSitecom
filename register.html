@@ -9,7 +9,7 @@
 <body>
   <div class="container active-login">
     <div class="form-section">
-      <form id="login-form">
+      <form id="login" class="form">
         <h2>Вход</h2>
         <input type="email" id="login-email" placeholder="Email" required />
         <input type="password" id="login-password" placeholder="Пароль" required />
@@ -18,7 +18,7 @@
         <p><a href="#" class="switch-form" data-target="reset">Забыли пароль?</a></p>
       </form>
 
-      <form id="signup-form" class="hidden">
+      <form id="signup" class="form hidden">
         <h2>Регистрация</h2>
         <input type="text" id="signup-username" placeholder="Имя пользователя" required />
         <input type="email" id="signup-email" placeholder="Email" required />
@@ -27,7 +27,7 @@
         <p><a href="#" class="switch-form" data-target="login">Уже есть аккаунт? Войти</a></p>
       </form>
 
-      <form id="reset-form" class="hidden">
+      <form id="reset" class="form hidden">
         <h2>Сброс пароля</h2>
         <input type="email" id="reset-email" placeholder="Email" required />
         <button type="submit">Сбросить пароль</button>
