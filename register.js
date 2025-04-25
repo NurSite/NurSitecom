@@ -1,11 +1,14 @@
-const supabaseUrl = 'https://iynvvfxtyuhvtcqkbsfu.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml5bnZ2Znh0eXVodnRjcWtic2Z1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0NTI2MDQ2MCwiZXhwIjoyMDYwODM2NDYwfQ.jnAYPz8dhIX4V2XpYgjSFw1cjp5RZgAcH4i2qypDY7s 
+const supabase = supabase.createClient(
+  'https://iynvvfxtyuhvtcqkbsfu.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml5bnZ2Znh0eXVodnRjcWtic2Z1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyNjA0NjAsImV4cCI6MjA2MDgzNjQ2MH0.-7B7-zKX1M44yyY7qncjKiLZ9Ort9jRjJq2-TW1FEj4'
+);
 
-// Форма входа
-document.getElementById('login-form').addEventListener('submit', async (e) => {
+// Вход
+document.getElementById('login').addEventListener('submit', async (e) => {
   e.preventDefault();
   const email = document.getElementById('login-email').value;
   const password = document.getElementById('login-password').value;
+
   const { error } = await supabase.auth.signInWithPassword({ email, password });
   if (error) {
     alert('Ошибка входа: ' + error.message);
@@ -14,50 +17,48 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
   }
 });
 
-// Форма регистрации
-document.getElementById('signup-form').addEventListener('submit', async (e) => {
+// Регистрация
+document.getElementById('signup').addEventListener('submit', async (e) => {
   e.preventDefault();
+  const username = document.getElementById('signup-username').value;
   const email = document.getElementById('signup-email').value;
   const password = document.getElementById('signup-password').value;
-  const username = document.getElementById('signup-username').value;
 
-  const { data, error } = await supabase.auth.signUp({
+  const { error } = await supabase.auth.signUp({
     email,
     password,
     options: {
-      data: {
-        username
-      }
+      data: { username }
     }
   });
 
   if (error) {
     alert('Ошибка регистрации: ' + error.message);
   } else {
-    alert('Подтвердите email для завершения регистрации.');
+    alert('Проверьте email для подтверждения');
   }
 });
 
 // Сброс пароля
-document.getElementById('reset-form').addEventListener('submit', async (e) => {
+document.getElementById('reset').addEventListener('submit', async (e) => {
   e.preventDefault();
   const email = document.getElementById('reset-email').value;
+
   const { error } = await supabase.auth.resetPasswordForEmail(email);
   if (error) {
     alert('Ошибка: ' + error.message);
   } else {
-    alert('Письмо для сброса пароля отправлено на почту.');
+    alert('Письмо для сброса отправлено.');
   }
 });
 
 // Переключение между формами
 document.querySelectorAll('.switch-form').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById('login-form').classList.add('hidden');
-    document.getElementById('signup-form').classList.add('hidden');
-    document.getElementById('reset-form').classList.add('hidden');
-
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
     const target = link.dataset.target;
-    document.getElementById(`${target}-form`).classList.remove('hidden');
+
+    document.querySelectorAll('.form').forEach(form => form.classList.add('hidden'));
+    document.getElementById(target).classList.remove('hidden');
   });
-}); 
+});
