@@ -1,62 +1,33 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!-- register.html -->
+<!DOCTYPE html><html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Регистрация – NurSite</title>
-  <script type="module" src="register.js" defer></script>
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f0f4f1;
-      color: #222;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    form {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 300px;
-    }
-    input {
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-    }
-    button {
-      width: 100%;
-      background: #15803d;
-      color: white;
-      padding: 0.7rem;
-      border: none;
-      border-radius: 5px;
-    }
-    .success, .error {
-      text-align: center;
-      margin-top: 1rem;
-    }
-    .success {
-      color: green;
-    }
-    .error {
-      color: red;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="register.css">
 </head>
 <body>
-  <form id="register-form">
-    <h2>Регистрация</h2>
-    <input type="text" id="username" placeholder="Имя пользователя" required />
-    <input type="email" id="email" placeholder="Email" required />
-    <input type="password" id="password" placeholder="Пароль" required />
-    <button type="submit">Зарегистрироваться</button>
-    <div class="success" id="success-message"></div>
-    <div class="error" id="error-message"></div>
-  </form>
-</body>
-</html>
+  <div class="container active-login">
+    <div class="welcome-section">
+      <h2>Добро пожаловать!</h2>
+      <p>Зарегистрируйтесь или войдите в аккаунт.</p>
+      <a href="#" class="switch-form">Sign Up</a>
+      <a href="#" class="switch-form">Sign In</a>
+    </div>
+    <div class="form-section">
+      <form id="login-form">
+        <h3>Вход</h3>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Пароль" required>
+        <button type="submit">Войти</button>
+      </form>
+      <form id="signup-form">
+        <h3>Регистрация</h3>
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Пароль" required>
+        <button type="submit">Зарегистрироваться</button>
+      </form>
+    </div>
+  </div>  <script src="register.js"></script></body>
+</html> 
