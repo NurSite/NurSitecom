@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="system">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Поиск сур</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="search.css" />
+  <script src="theme.js" defer></script>
+  <script src="search.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="search">
+      <input type="text" class="input" placeholder="Поиск по суре..." />
+      <button class="btn">
+        <ion-icon name="search-outline"></ion-icon>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <ul id="results"></ul>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="index.html">Главная</a>
+    <a href="daily.html">Ежедневно</a>
+    <a href="favorites.html">Избранное</a>
+    <a href="dhikr.html">Зикр</a>
+    <a href="settings.html">Настройки</a>
+  </nav>
+
+  <!-- Иконки Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
