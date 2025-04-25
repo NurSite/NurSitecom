@@ -42,3 +42,20 @@ async function resetPassword() {
   if (error) alert(error.message);
   else alert("Письмо со ссылкой на сброс отправлено.");
 }
+// Отмена перезагрузки страницы и переключение форм
+document.getElementById('show-signup').addEventListener('click', function (e) {
+  e.preventDefault();
+  showForm('signup-form');
+});
+document.getElementById('show-login').addEventListener('click', function (e) {
+  e.preventDefault();
+  showForm('login-form');
+});
+document.getElementById('show-login-2').addEventListener('click', function (e) {
+  e.preventDefault();
+  showForm('login-form');
+});
+document.getElementById('show-reset').addEventListener('click', function (e) {
+  e.preventDefault();
+  showForm('reset-form');
+});
