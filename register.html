@@ -1,40 +1,17 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Вход и Регистрация</title>
-  <link rel="stylesheet" href="register.css" />
-</head>
-<body>
-  <div class="container">
-    <div class="form-container login-form">
-      <h2>Вход</h2>
-      <input type="email" id="login-email" placeholder="Email" />
-      <input type="password" id="login-password" placeholder="Пароль" />
-      <button onclick="login()">Войти</button>
-      <p><a href="#" id="show-reset">Забыли пароль?</a></p>
-      <p>Нет аккаунта? <a href="#" id="show-signup">Регистрация</a></p>
-    </div>
+<!-- В login форме -->
+<p>Нет аккаунта? 
+  <a href="#" id="show-signup" onclick="event.preventDefault()">Регистрация</a>
+</p>
+<p>
+  <a href="#" id="show-reset" onclick="event.preventDefault()">Забыли пароль?</a>
+</p>
 
-    <div class="form-container signup-form hidden">
-      <h2>Регистрация</h2>
-      <input type="email" id="signup-email" placeholder="Email" />
-      <input type="text" id="signup-username" placeholder="Имя пользователя" />
-      <input type="password" id="signup-password" placeholder="Пароль" />
-      <button onclick="signup()">Зарегистрироваться</button>
-      <p>Уже есть аккаунт? <a href="#" id="show-login">Вход</a></p>
-    </div>
+<!-- В signup форме -->
+<p>Уже есть аккаунт? 
+  <a href="#" id="show-login" onclick="event.preventDefault()">Вход</a>
+</p>
 
-    <div class="form-container reset-form hidden">
-      <h2>Сброс пароля</h2>
-      <input type="email" id="reset-email" placeholder="Введите ваш Email" />
-      <button onclick="resetPassword()">Сбросить пароль</button>
-      <p>Вспомнили пароль? <a href="#" id="show-login-2">Назад ко входу</a></p>
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <script src="register.js"></script>
-</body>
-</html>
+<!-- В reset форме -->
+<p>Вспомнили пароль? 
+  <a href="#" id="show-login-2" onclick="event.preventDefault()">Назад ко входу</a>
+</p>
