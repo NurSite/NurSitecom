@@ -1,118 +1,69 @@
-/* ============= Базовые стили ============= */
 :root {
-  --surah-item-size: 2.5rem;
-  --animation-duration: 0.3s;
+  --card-padding: 1.5rem;
+  --surah-number-size: 2.5rem;
 }
 
-/* ============= Список сур ============= */
-.surah-list {
-  counter-reset: surah-counter;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.surah-item {
-  position: relative;
-  padding: 1rem 1rem 1rem calc(var(--surah-item-size) + 1rem);
-  margin-bottom: 1.5rem;
-  background: var(--card-bg, #fff);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  counter-increment: surah-counter;
-  transition: transform var(--animation-duration) ease;
-}
-
-.surah-item:hover {
-  transform: translateY(-3px);
-}
-
-.surah-item::before {
-  content: counter(surah-counter);
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--color-primary);
-  color: white;
-  width: var(--surah-item-size);
-  height: var(--surah-item-size);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-}
-
-/* ============= Анимации ============= */
+/* Анимации */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-.ayat-enter {
-  animation: fadeIn var(--animation-duration) ease-out;
-}
-
-/* ============= Загрузка ============= */
+/* Загрузка */
 .loading-spinner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  display: grid;
+  place-items: center;
   min-height: 200px;
 }
 
 .spinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid var(--color-primary);
+  width: 3rem;
+  height: 3rem;
+  border: 0.5rem solid rgba(var(--color-primary-rgb), 0.2);
+  border-top-color: var(--color-primary);
   border-radius: 50%;
-  border-top-color: transparent;
   animation: spin 1s linear infinite;
 }
 
-/* ============= Сетка сур ============= */
+/* Сетка */
 .surah-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
-  margin: 2rem 0;
+  padding: 1rem;
 }
 
 .surah-card {
-  background: var(--card-bg, #fff);
+  position: relative;
+  padding: var(--card-padding);
+  padding-left: calc(var(--surah-number-size) + var(--card-padding));
+  background: var(--card-bg);
   border-radius: var(--border-radius);
-  padding: 1.5rem;
   box-shadow: var(--box-shadow);
-  transition: all var(--animation-duration) ease;
+  transition: transform 0.2s ease;
 }
 
 .surah-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
 }
 
-/* ============= Адаптивность ============= */
+.surah-number {
+  position: absolute;
+  left: var(--card-padding);
+  top: var(--card-padding);
+  width: var(--surah-number-size);
+  height: var(--surah-number-size);
+  background: var(--color-primary);
+  color: white;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: bold;
+}
+
+/* Адаптивность */
 @media (max-width: 768px) {
   .surah-grid {
     grid-template-columns: 1fr;
-  }
-  
-  .surah-item {
-    padding-left: calc(var(--surah-item-size) + 0.5rem);
-  }
-}
-
-/* ============= Темная тема ============= */
-[data-theme="dark"] {
-  .surah-item,
-  .surah-card {
-    --card-bg: #2a2a2a;
   }
 }
