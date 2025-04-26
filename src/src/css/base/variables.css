@@ -1,0 +1,26 @@
+:root {
+  /* Цвета */
+  --color-primary: #4CAF50;
+  --color-secondary: #2196F3;
+  --color-error: #f44336;
+  --color-text: #333;
+  --color-bg: #fff;
+
+  /* Темная тема */
+  --color-dark-text: #f0f0f0;
+  --color-dark-bg: #1a1a1a;
+
+  /* Размеры */
+  --max-width: 1200px;
+  --border-radius: 8px;
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  /* Шрифты */
+  --font-sans: 'Segoe UI', system-ui, sans-serif;
+  --font-arabic: 'Amiri Quran', serif;
+}
+
+[data-theme="dark"] {
+  --color-text: var(--color-dark-text);
+  --color-bg: var(--color-dark-bg);
+}
