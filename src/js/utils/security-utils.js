@@ -1,19 +1,15 @@
 /**
- * Очистка HTML-строк
- * @param {string} str
- * @returns {string}
+ * Безопасный рендеринг HTML (санитизация контента)
+ * @param {string} html - HTML строка
+ * @param {HTMLElement} element - Элемент для рендеринга
  */
-export function sanitize(str) {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
-}
-
-/**
- * Безопасный рендеринг
- * @param {string} text
- * @param {HTMLElement} element
- */
-export function safeRender(text, element) {
-  element.innerHTML = sanitize(text);
+export function safeRender(html, element) {
+  // Простая санитизация (в реальном проекте используйте DOMPurify)
+  const sanitized = html
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+  
+  element.innerHTML = sanitized;
 }
