@@ -1,0 +1,28 @@
+/* Глобальные классы */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+.flex {
+  display: flex;
+  gap: 1rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Адаптивные отступы */
+.p-1 { padding: 1rem; }
+.mt-2 { margin-top: 2rem; }
+
+/* Состояния */
+.is-hidden { display: none !important; }
+.is-active { font-weight: bold; }
