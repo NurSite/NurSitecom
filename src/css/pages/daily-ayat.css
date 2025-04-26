@@ -1,24 +1,57 @@
+/* Основной контейнер */
 .daily-ayat-container {
-  max-width: 600px;
+  max-width: 800px;
   margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  background: var(--card-bg, #fff);
+  box-shadow: var(--box-shadow);
   text-align: center;
 }
 
-.ayat-of-the-day {
+[data-theme="dark"] .daily-ayat-container {
+  --card-bg: #2a2a2a;
+}
+
+/* Заголовок */
+.daily-ayat-title {
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+/* Текст аята */
+.ayat-text {
   font-size: 2rem;
   line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-arabic);
+  direction: rtl;
+}
+
+/* Перевод */
+.ayat-translation {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
   margin-bottom: 2rem;
-  padding: 2rem;
-  border-radius: var(--border-radius);
-  background: var(--highlight-bg, rgba(76, 175, 80, 0.1));
 }
 
-.save-ayat-btn {
-  margin-top: 1rem;
-  padding: 0.75rem 2rem;
+/* Кнопки */
+.ayat-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
 }
 
-/* Для темной темы */
-[data-theme="dark"] .ayat-of-the-day {
-  --highlight-bg: rgba(76, 175, 80, 0.2);
+/* Адаптивность */
+@media (max-width: 768px) {
+  .daily-ayat-container {
+    padding: 1rem;
+    margin: 1rem;
+  }
+  
+  .ayat-text {
+    font-size: 1.5rem;
+  }
 }
