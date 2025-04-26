@@ -1,38 +1,25 @@
 <!DOCTYPE html>
-<html lang="ru" dir="rtl">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Коран | NurSite</title>
-  <!-- Стили -->
   <link rel="stylesheet" href="../../css/base/variables.css">
-  <link rel="stylesheet" href="../../css/base/reset.css">
   <link rel="stylesheet" href="../../css/pages/quran.css">
-  <!-- Шрифт для арабского текста -->
   <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
 </head>
 <body>
-  <main class="quran-container">
-    <!-- Заголовок -->
-    <h1 class="page-title">Священный Коран</h1>
+  <main class="quran-page">
+    <div id="loading" class="loading-spinner">
+      <div class="spinner"></div>
+    </div>
     
-    <!-- Ежедневный аят -->
-    <section class="daily-ayat-section">
-      <div id="loading" class="loading-spinner">
-        <div class="spinner"></div>
-        <p>Загрузка...</p>
-      </div>
-      <div id="dailyAyat" class="daily-ayat hidden"></div>
-    </section>
-
-    <!-- Список сур -->
-    <section class="surah-section">
-      <h2>Суры</h2>
-      <div id="surahList" class="surah-grid"></div>
+    <section id="content" class="hidden">
+      <h1>Коран</h1>
+      <div id="surahGrid" class="surah-grid"></div>
     </section>
   </main>
 
-  <!-- Скрипты -->
   <script type="module" src="./script.js"></script>
 </body>
 </html>
