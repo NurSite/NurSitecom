@@ -1,0 +1,20 @@
+.app-footer {
+  background: var(--footer-bg, #f5f5f5);
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.footer-column h4 {
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .app-footer {
+  --footer-bg: #222;
+}
