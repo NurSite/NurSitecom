@@ -1,26 +1,19 @@
 <template>
   <div class="home-page">
     <Header />
-    
     <main class="main-content">
       <section class="hero-section">
-        <div class="daily-ayat">
-          <h2>Аят дня</h2>
-          <div class="arabic-text">{{ dailyAyat.text }}</div>
-          <p class="translation">{{ dailyAyat.translation }}</p>
-        </div>
-        
-        <div class="cta-buttons">
-          <button 
-            class="main-cta"
-            @click="$router.push('/quran')"
-          >
-            Начать чтение
-          </button>
-        </div>
+        <h2>Аят дня</h2>
+        <div class="arabic-text">{{ dailyAyat.text }}</div>
+        <p class="translation">{{ dailyAyat.translation }}</p>
+        <button 
+          class="main-cta"
+          @click="$router.push('/quran')"
+        >
+          Начать чтение
+        </button>
       </section>
     </main>
-
     <Footer />
   </div>
 </template>
@@ -38,21 +31,28 @@ export default {
     }
   },
   async mounted() {
-    this.dailyAyat = await fetchDailyAyat()
+    try {
+      this.dailyAyat = await fetchDailyAyat()
+    } catch (error) {
+      console.error('Ошибка загрузки:', error)
+      this.dailyAyat = {
+        text: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
+        translation: 'Во имя Аллаха, Милостивого, Милующего.'
+      }
+    }
   }
 }
 </script>
 
 <style>
-.hero-section {
-  text-align: center;
-  padding: 4rem 1rem;
+.arabic-text {
+  font-family: 'Amiri Quran', serif;
+  font-size: 2rem;
+  margin: 2rem 0;
 }
 
-.main-cta {
-  background: var(--accent-base);
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  font-size: 1.2rem;
+.translation {
+  color: #4a5568;
+  font-size: 1.1rem;
 }
 </style>
