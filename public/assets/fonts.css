@@ -1,0 +1,16 @@
+/* Amiri Quran (арабский текст) */
+@font-face {
+  font-family: 'Amiri Quran';
+  src: url('/assets/fonts/amiri-quran.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Inter (основной шрифт) */
+@font-face {
+  font-family: 'Inter';
+  src: url('https://fonts.gstatic.com/s/inter/v12.woff2') format('woff2');
+  font-weight: 300 400 500;
+  font-display: swap;
+}
