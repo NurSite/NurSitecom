@@ -1,22 +1,27 @@
-const CACHE_NAME = 'nursite-v1';
-const CACHE_URLS = [
-  '/',
-  '/src/css/base/variables.css',
-  '/src/js/modules/quran.js',
-  '/offline.html'
-];
+const CACHE_NAME = 'nursite-v4';
+const OFFLINE_URL = '/offline.html';
 
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(CACHE_URLS))
+      .then(cache => cache.addAll([
+        '/',
+        '/styles/main.css',
+        '/js/app.js',
+        '/assets/fonts/amiri-quran.woff2',
+        '/assets/icons/favicon.svg'
+      ]))
   );
 });
 
 self.addEventListener('fetch', (e) => {
-  e.respondWith(
-    caches.match(e.request)
-      .then(response => response || fetch(e.request))
-      .catch(() => caches.match('/offline.html'))
-  );
+  if (e.request.mode === 'navigate') {
+    e.respondWith(
+      fetch(e.request)
+        .catch(() => caches.match(OFFLINE_URL))
+  } else {
+    e.respondWith(
+      caches.match(e.request)
+        .then(res => res || fetch(e.request))
+  }
 });
