@@ -23,6 +23,16 @@
 </template>
 
 <script>
+  
+<script>
+import { sanitize } from '@/utils/security/sanitizer'
+
+computed: {
+  safeAyatText() {
+    return sanitize(this.ayat.text)
+  }
+}
+</script>
 export default {
   props: {
     ayat: {
