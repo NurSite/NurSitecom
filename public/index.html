@@ -1,1 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1e293b">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+    
+    <title>NurSite - Исламские знания</title>
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Шрифты -->
+    <link rel="stylesheet" href="/styles/main.css">
+    
+    <!-- Иконка -->
+    <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <div id="app">
+        <!-- Хедер -->
+        <header class="header">
+            <h1>نورسايت</h1>
+            <nav class="nav">
+                <a href="/quran.html" class="nav-link">Коран</a>
+                <a href="/profile.html" class="nav-link">Профиль</a>
+            </nav>
+        </header>
 
+        <!-- Основной контент -->
+        <main class="main-content">
+            <section class="daily-ayat">
+                <div class="arabic-text" id="dailyAyat"></div>
+                <button class="cta-button" onclick="location.href='/quran.html'">
+                    Начать изучение
+                </button>
+            </section>
+        </main>
+
+        <!-- Футер -->
+        <footer class="footer">
+            <p>© 2024 NurSite. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <!-- Скрипты -->
+    <script src="/js/app.js" type="module"></script>
+</body>
+</html>
