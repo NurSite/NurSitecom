@@ -8,26 +8,34 @@
       content="default-src 'self';
                script-src 'self' 'unsafe-eval' https://cdnjs.cloudflare.com;
                style-src 'self' 'unsafe-inline';
-               img-src 'self' data:">
+               img-src 'self' data: assets/*">
     <title>NurSite - Исламские знания</title>
     
     <!-- PWA -->
     <link rel="manifest" href="manifest.json">
     
-    <!-- Шрифты -->
+    <!-- Стили -->
+    <link rel="stylesheet" href="styles/base/reset.css">
+    <link rel="stylesheet" href="styles/base/fonts.css">
     <link rel="stylesheet" href="styles/main.css">
     
-    <!-- Иконка -->
-    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+    <!-- Иконки -->
+    <link rel="icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-icon.png">
 </head>
 <body>
     <div id="app">
         <!-- Хедер -->
         <header class="header">
+            <button class="menu-button">
+                <img src="assets/menu.svg" alt="Меню" width="24">
+            </button>
             <h1>نورسايت</h1>
             <nav class="nav">
-                <a href="quran.html" class="nav-link">Коран</a>
-                <a href="profile.html" class="nav-link">Профиль</a>
+                <a href="quran.html" class="nav-link">
+                    <img src="assets/quran.svg" alt="Коран" width="20">
+                    Коран
+                </a>
             </nav>
         </header>
 
@@ -35,20 +43,4 @@
         <main class="main-content">
             <section class="daily-ayat">
                 <div class="arabic-text" id="dailyAyat" lang="ar"></div>
-                <button class="cta-button" onclick="location.href='quran.html'">
-                    Начать изучение
-                </button>
-            </section>
-        </main>
-
-        <!-- Футер -->
-        <footer class="footer">
-            <p>© 2024 NurSite. Все права защищены.</p>
-        </footer>
-    </div>
-
-    <!-- Скрипты -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
-    <script src="js/app.js" type="module"></script>
-</body>
-</html>
+                <button class="cta-button" onclick="location.href
