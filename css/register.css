@@ -1,0 +1,144 @@
+/* register.css */
+
+body.register-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-light, #f9f9f9); /* Светлый фон по умолчанию */
+  color: var(--text-light, #333); /* Текст для светлой темы */
+}
+
+body.dark-theme {
+  background-color: var(--bg-dark, #121212); /* Тёмный фон */
+  color: var(--text-dark, #e0e0e0); /* Текст для тёмной темы */
+}
+
+.auth-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.auth-tabs {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.auth-tabs button {
+  flex: 1;
+  padding: 10px;
+  background-color: var(--bg-light, #f0f0f0);
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.auth-tabs button:hover {
+  background-color: var(--hover-light, #e0e0e0);
+}
+
+body.dark-theme .auth-tabs button {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-theme .auth-tabs button:hover {
+  background-color: #444;
+}
+
+.auth-tab {
+  display: none;
+  width: 100%;
+}
+
+.auth-tab.active {
+  display: block;
+}
+
+.auth-tab h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.auth-tab input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  background-color: var(--input-light, #fff);
+  color: var(--text-light, #333);
+}
+
+body.dark-theme .auth-tab input {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+.auth-tab button {
+  width: 100%;
+  padding: 10px;
+  background-color: #009688; /* Зеленоватый оттенок */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.auth-tab button:hover {
+  background-color: #00796b;
+}
+
+body.dark-theme .auth-tab button {
+  background-color: #00695c; /* Зелёный для тёмной темы */
+}
+
+body.dark-theme .auth-tab button:hover {
+  background-color: #004d40;
+}
+
+/* Адаптивность (Responsive Design) */
+@media (max-width: 768px) {
+  .auth-container {
+    padding: 1.5rem 1rem;
+    max-width: 90%;
+  }
+
+  .auth-tabs {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .auth-tabs button {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Footer всегда снизу */
+footer.footer {
+  margin-top: auto;
+}
+
+/* Переменные для светлой и тёмной темы */
+:root {
+  --bg-light: #f9f9f9;
+  --bg-dark: #121212;
+  --text-light: #333;
+  --text-dark: #e0e0e0;
+  --input-light: #fff;
+  --hover-light: #e0e0e0;
+}
