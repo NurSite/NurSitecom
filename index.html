@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+	<meta charset="UTF-8">
+    <meta http-equiv= "X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="nursite.jpg" type="image/x-icon">
+    <link href="css/styles.css" rel="stylesheet">
+	  <script defer src="theme.js"></script>
+	  
+	<title>NurSite</title>
+  </head>
+  <body>
+  <!--СЕКЦИЯ HEADER  -->
+	<header class="container">
+	  <!-- Кнопка гамбургера -->
+	  <button id="hamburgerBtn" aria-label="Меню" class="hamburger-btn">☰ Меню</button>
+
+	  <!-- Меню сбоку -->
+	  <nav id="sideMenu" class="side-menu">
+		<div class="donate-box">
+		  <h3>Стать ежемесячным донором</h3>
+		  <p>Ежемесячные пожертвования помогают нам улучшить и поддерживать работу...</p>
+		  <a href="donate.html" class="donate-btn">Пожертвовать Ежемесячно</a>
+		  <a href="about.html">Узнать больше</a>
+		</div>
+
+		<ul class="menu-list">
+		  <li><a href="index.html">Дом</a></li>
+		  <li><a href="about.html">О нас</a></li>
+		  <li><a href="developers.html">Разработчики</a></li>
+		  <li><a href="feedback.html">Обновления продуктов</a></li>
+		  <li><a href="help.html">Помощь</a></li>
+		</ul>
+
+		<div class="projects">
+		  <h4>НАШИ ПРОЕКТЫ</h4>
+		  <p class="small-text">Некомерческие проекты, принадлежащие, управляемые или спонсируемые <span class="brand">NurProduction</span>.</p>
+		  <ul>
+			<li><a href="#">NurSite</a></li>
+			<li><a href="nurapp.html">NurApp</a></li>
+		  </ul>
+		</div>
+	  </nav>
+	
+	  <!-- СВОЙ HEADER ДЛЯ ПК,ПЛАНШЕТ-->
+		
+	  <span class="logo">NurSite</span>
+	  <nav class="top-nav">
+		<ul>
+		  <li class="active"> <a href="index.html">Главное</a></li>
+		  <li> <a href="quran.html">Коран</a></li>
+		  <li> <a href="stait.html">Статия</a></li>
+		  <li> <a href="setting.html">Настройка</a></li>
+		</ul>
+	  </nav>
+	</header>
+	
+  
+  <!--ВСЕ BODY ЗДЕСЬ -->
+	
+  <section class="knowledge-section">
+	<h2 class="section-title">Рубрика «Знания»</h2>
+	<div class="articles-grid">
+	  <article class="article-card">
+		<h3>Что такое Таухид?</h3>
+		<p>Основной принцип Ислама — единобожие. Узнай, почему он так важен.</p>
+		<a href="article_tawhid.html">Читать далее</a>
+	  </article>
+	  <article class="article-card">
+		<h3>История Пророка Юсуфа (а.с.)</h3>
+		<p>Удивительная история терпения, испытаний и победы.</p>
+		<a href="article_yusuf.html">Читать далее</a>
+	  </article>
+	  <article class="article-card">
+		<h3>Как правильно делать тахаджуд</h3>
+		<p>Ночной намаз — путь к приближению к Аллаху. Простое руководство.</p>
+		<a href="article_tahajjud.html">Читать далее</a>
+	  </article>
+	</div>
+  </section>
+  <section class="daily-learn-section">
+	<h2 class="section-title">Изучать по дням</h2>
+	<div class="daily-cards">
+	  <div class="daily-card">
+		<h3>День 1</h3>
+		<p>Аль-Фатиха с пояснением</p>
+		<a href="daily.html?day=1" class="btn-day">Начать</a>
+	  </div>
+	  <div class="daily-card">
+		<h3>День 2</h3>
+		<p>Аль-Бакара (1-5) + хадис</p>
+		<a href="daily.html?day=2" class="btn-day">Изучать</a>
+	  </div>
+	  <div class="daily-card">
+		<h3>День 3</h3>
+		<p>Смысл поклонения в исламе</p>
+		<a href="daily.html?day=3" class="btn-day">Перейти</a>
+	  </div>
+	</div>
+  </section>
+  <a href="donate.html" class="floating-support-btn">Поддержать</a>
+	<div class="streak-container">
+	  <p class="streak-text">Вы получаете знания <span id="streak-days">1</span> дней подряд</p>
+	</div>
+  </body>
+  <!--ВСЕ СКРИПТЫ ДОЛЖНЫ БЫТЬ ЗДЕСЬ -->
+<script>
+  // Гамбургер логика
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const sideMenu = document.getElementById('sideMenu');
+
+hamburgerBtn.addEventListener('click', () => {
+  sideMenu.classList.toggle('active');
+});
+
+// Закрытие при клике вне меню
+document.addEventListener('click', (e) => {
+  if (!sideMenu.contains(e.target) && e.target !== hamburgerBtn) {
+    sideMenu.classList.remove('active');
+  }
+});
+  // Пример простой streak-системы с localStorage
+  const streakKey = 'nursite_streak';
+  const lastVisitKey = 'nursite_lastVisit';
+
+  const today = new Date().toDateString();
+  const lastVisit = localStorage.getItem(lastVisitKey);
+  let streak = parseInt(localStorage.getItem(streakKey)) || 1;
+
+  if (lastVisit !== today) {
+    const yesterday = new Date(Date.now() - 86400000).toDateString();
+    if (lastVisit === yesterday) {
+      streak += 1;
+    } else {
+      streak = 1;
+    }
+    localStorage.setItem(streakKey, streak);
+    localStorage.setItem(lastVisitKey, today);
+  }
+
+  document.getElementById('streak-days').textContent = streak;
+</script>
+
+</body>
+
+<!--ЗДЕСЬ ВСЕ FOOTER -->
+
+	<footer class="footer">
+	  <div class="container">
+		<div class="footer_contacts">
+		  <span class="logo">NurSite</span>
+		  <a class="footer_link-mail" href="mailto:nursite.com@gmail.com">support@nursite.com</a>
+		</div>
+
+		<nav class="footer_nav">
+		  <ul class="footer_section">
+			<li><strong>Навигация</strong></li>
+			<li><a href="index.html">Главное</a></li>
+			<li><a href="quran.html">Коран</a></li>
+			<li><a href="stait.html">Статья</a></li>
+			<li><a href="about.html">О нас</a></li>
+			<li><a href="developers.html">Разработчики</a></li>
+			<li><a href="updates.html">Обновления продукта</a></li>
+			<li><a href="feedback.html">Обратная связь</a></li>
+			<li><a href="help.html">Помощь</a></li>
+		  </ul>
+
+		  <ul class="footer_section">
+			<li><strong>Популярные суры</strong></li>
+			<li><a href="suras/quran.htmlsur1.xml">Аль-Фатиха</a></li>
+			<li><a href="sur2.html">Аль-Бакара</a></li>
+			<li><a href="sur18.html">Аль-Кахф</a></li>
+			<li><a href="sur36.html">Ясин</a></li>
+			<li><a href="sur55.html">Ар-Рахман</a></li>
+			<li><a href="sur56.html">Аль-Вакиа</a></li>
+			<li><a href="sur67.html">Аль-Мульк</a></li>
+			<li><a href="sura_kursi.html">Аятуль Курси</a></li>
+		  </ul>
+
+		  <ul class="footer_section">
+			<li><strong>Наши проекты</strong></li>
+			<li><a href="index.html">NurSite</a></li>
+			<li><a href="nurapp.html">NurApp</a></li>
+		  </ul>
+		</nav>
+
+		<div class="footer_social">
+		  <h1 class="footer_section">Мы в соцсетах</h1>
+		  <p>Будьте в курсе обновлений. </p>
+		  <img class="footer_social-icon" src="icon/telegram_logo.png"  alt="telegram"> <a href="https://t.me/vuittonere" ></a>
+		  <img class="footer_social-icon" src="icon/Youtube_logo.png"  alt="youtube"> <a href="#" ></a>
+		  <img class="footer_social-icon" src="icon/TikTok_logo.jpg"  alt="tiktok"> <a href="#" ></a>
+		</div>
+
+		<div class="footer_copy">
+		  © 04.2025–05.2025 NurSite. Все права защищены.
+		</div>
+	  </div>
+	</footer>
+</html>

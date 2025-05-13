@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+  <head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Регистрация — NurSite</title>
+	<link rel="stylesheet" href="./css/register.css" />
+	<link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body class="register-page">
+
+	<div class="auth-container">
+	  <div class="auth-tabs">
+		<button onclick="showTab('login')">Вход</button>
+		<button onclick="showTab('signup')">Регистрация</button>
+		<button onclick="showTab('reset')">Сброс пароля</button>
+	  </div>
+
+	  <div id="login" class="auth-tab active">
+		<h2>Войти</h2>
+		<input type="email" id="login-email" placeholder="Email" required />
+		<input type="password" id="login-password" placeholder="Пароль" required />
+		<button onclick="login()">Войти</button>
+	  </div>
+
+	  <div id="signup" class="auth-tab">
+		<h2>Регистрация</h2>
+		<input type="text" id="signup-username" placeholder="Имя пользователя" required />
+		<input type="email" id="signup-email" placeholder="Email" required />
+		<input type="password" id="signup-password" placeholder="Пароль" required />
+		<button onclick="register()">Создать аккаунт</button>
+	  </div>
+
+	  <div id="reset" class="auth-tab">
+		<h2>Сброс пароля</h2>
+		<input type="email" id="reset-email" placeholder="Email" required />
+		<button onclick="resetPassword()">Сбросить пароль</button>
+	  </div>
+	</div>
+
+	<script src="./js/supabase.js"></script>
+	<script src="./js/register.js"></script>
+<script>
+    function showTab(tabId) {
+      document.querySelectorAll('.auth-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.getElementById(tabId).classList.add('active');
+    }
+</script>
+  </body>
+
+  <footer class="footer">
+	<div class="container">
+	  <div class="footer_contacts">
+		<span class="logo">NurSite</span>
+		<a class="footer_link-mail" href="mailto:nursite.com@gmail.com">support@nursite.com</a>
+	  </div>
+
+	  <nav class="footer_nav">
+		<ul class="footer_section">
+		  <li><strong>Навигация</strong></li>
+		  <li><a href="index.html">Главное</a></li>
+		  <li><a href="quran.html">Коран</a></li>
+		  <li><a href="stait.html">Статья</a></li>
+		  <li><a href="about.html">О нас</a></li>
+		  <li><a href="developers.html">Разработчики</a></li>
+		  <li><a href="updates.html">Обновления продукта</a></li>
+		  <li><a href="feedback.html">Обратная связь</a></li>
+		  <li><a href="help.html">Помощь</a></li>
+		</ul>
+
+		<ul class="footer_section">
+		  <li><strong>Популярные суры</strong></li>
+		  <li><a href="suras/quran.htmlsur1.xml">Аль-Фатиха</a></li>
+		  <li><a href="sur2.html">Аль-Бакара</a></li>
+		  <li><a href="sur18.html">Аль-Кахф</a></li>
+		  <li><a href="sur36.html">Ясин</a></li>
+		  <li><a href="sur55.html">Ар-Рахман</a></li>
+		  <li><a href="sur56.html">Аль-Вакиа</a></li>
+		  <li><a href="sur67.html">Аль-Мульк</a></li>
+		  <li><a href="sura_kursi.html">Аятуль Курси</a></li>
+		</ul>
+
+		<ul class="footer_section">
+		  <li><strong>Наши проекты</strong></li>
+		  <li><a href="index.html">NurSite</a></li>
+		  <li><a href="nurapp.html">NurApp</a></li>
+		</ul>
+	  </nav>
+
+	  <div class="footer_social">
+		<img class="footer_social-icon" src="icon/telegram_logo"  alt="telegram"> <a href="#" ></a>
+		<img class="footer_social-icon" src="icon/youtube_logo"  alt="youtube"> <a href="#" ></a>
+		<img class="footer_social-icon" src="icon/tiktok_logo"  alt="tiktok"> <a href="#" ></a>
+	  </div>
+
+	  <div class="footer_copy">
+		© 04.2025–05.2025 NurSite. Все права защищены.
+	  </div>
+	</div>
+  </footer>
+
+<script>
+  function toggleTheme() {
+    document.body.classList.toggle('light-theme');
+    localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
+  }
+
+  // Автозагрузка темы
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-theme');
+    }
+  });
+</script>
+
+  
+</html>
