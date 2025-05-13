@@ -4,21 +4,57 @@
 	<meta charset="UTF-8">
     <meta http-equiv= "X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="nursite icon" href="nursite.jpg" type="image/x-icon">
+	<link rel="icon" href="nursite.jpg" type="image/x-icon">
     <link href="css/styles.css" rel="stylesheet">
+	  <script defer src="theme.js"></script>
+	  
 	<title>NurSite</title>
   </head>
-  <header class="container">
-	<span class="logo">NurSite</span>
-	<nav>
-	  <ul>
-		<li> <a href="index.html">Главное</a></li>
-		<li> <a href="quran_spiska.html">Коран</a></li>
-		<li> <a href="stait.html">Статия</a></li>
-		<li> <a href="contact.html">Связатся</a></li>
-	  </ul>
-	</nav>
-  </header>
+  <body>
+  <!--СЕКЦИЯ HEADER  -->
+	<header class="container">
+	  <!-- Кнопка гамбургера -->
+	  <button id="hamburgerBtn" aria-label="Меню" class="hamburger-btn">☰ Меню</button>
+
+	  <!-- Меню сбоку -->
+	  <nav id="sideMenu" class="side-menu">
+		<div class="donate-box">
+		  <h3>Стать ежемесячным донором</h3>
+		  <p>Ежемесячные пожертвования помогают нам улучшить и поддерживать работу...</p>
+		  <a href="donate.html" class="donate-btn">Пожертвовать Ежемесячно</a>
+		  <a href="toknow.html">Узнать больше</a>
+		</div>
+
+		<ul class="menu-list">
+		  <li><a href="index.html">Дом</a></li>
+		  <li><a href="about.html">О нас</a></li>
+		  <li><a href="developers.html">Разработчики</a></li>
+		  <li><a href="feedback.html">Обновления продуктов</a></li>
+		  <li><a href="help.html">Помощь</a></li>
+		</ul>
+
+		<div class="projects">
+		  <h4>НАШИ ПРОЕКТЫ</h4>
+		  <p class="small-text">Некомерческие проекты, принадлежащие, управляемые или спонсируемые <span class="brand">NurProduction</span>.</p>
+		  <ul>
+			<li><a href="#">NurSite</a></li>
+			<li><a href="nurapp.html">NurApp</a></li>
+		  </ul>
+		</div>
+	  </nav>
+	
+	  <!-- СВОЙ HEADER ДЛЯ ПК,ПЛАНШЕТ-->
+		
+	  <span class="logo">NurSite</span>
+	  <nav class="top-nav">
+		<ul>
+		  <li> <a href="index.html">Главное</a></li>
+		  <li> <a href="quran.html">Коран</a></li>
+		  <li> <a href="stait.html">Статия</a></li>
+		  <li> <a href="setting.html">Настройка</a></li>
+		</ul>
+	  </nav>
+	</header>
   
 <section class="all-daily-days">
   <h2>Все дни изучения</h2>
@@ -30,54 +66,56 @@
   </ul>
 </section>
 
-  <footer class="footer">
-	<div class="container">
-	  <div class="footer_contacts">
-		<span class="logo">NurSite</span>
-		<a class="footer_link-mail" href="mailto:nursite.com@gmail.com">support@nursite.com</a>
+  	<footer class="footer">
+	  <div class="container">
+		<div class="footer_contacts">
+		  <span class="logo">NurSite</span>
+		  <a class="footer_link-mail" href="mailto:nursite.com@gmail.com">support@nursite.com</a>
+		</div>
+
+		<nav class="footer_nav">
+		  <ul class="footer_section">
+			<li><strong>Навигация</strong></li>
+			<li><a href="index.html">Главное</a></li>
+			<li><a href="quran.html">Коран</a></li>
+			<li><a href="stait.html">Статья</a></li>
+			<li><a href="about.html">О нас</a></li>
+			<li><a href="developers.html">Разработчики</a></li>
+			<li><a href="updates.html">Обновления продукта</a></li>
+			<li><a href="feedback.html">Обратная связь</a></li>
+			<li><a href="help.html">Помощь</a></li>
+		  </ul>
+
+		  <ul class="footer_section">
+			<li><strong>Популярные суры</strong></li>
+			<li><a href="suras/quran.htmlsur1.xml">Аль-Фатиха</a></li>
+			<li><a href="sur2.html">Аль-Бакара</a></li>
+			<li><a href="sur18.html">Аль-Кахф</a></li>
+			<li><a href="sur36.html">Ясин</a></li>
+			<li><a href="sur55.html">Ар-Рахман</a></li>
+			<li><a href="sur56.html">Аль-Вакиа</a></li>
+			<li><a href="sur67.html">Аль-Мульк</a></li>
+			<li><a href="sura_kursi.html">Аятуль Курси</a></li>
+		  </ul>
+
+		  <ul class="footer_section">
+			<li><strong>Наши проекты</strong></li>
+			<li><a href="index.html">NurSite</a></li>
+			<li><a href="nurapp.html">NurApp</a></li>
+		  </ul>
+		</nav>
+
+		<div class="footer_social">
+		  <h1 class="footer_section">Мы в соцсетах</h1>
+		  <p>Будьте в курсе обновлений. </p>
+		  <img class="footer_social-icon" src="icon/telegram_logo.png"  alt="telegram"> <a href="https://t.me/vuittonere" ></a>
+		  <img class="footer_social-icon" src="icon/Youtube_logo.png"  alt="youtube"> <a href="#" ></a>
+		  <img class="footer_social-icon" src="icon/TikTok_logo.jpg"  alt="tiktok"> <a href="#" ></a>
+		</div>
+
+		<div class="footer_copy">
+		  © 04.2025–05.2025 NurSite. Все права защищены.
+		</div>
 	  </div>
-
-	  <nav class="footer_nav">
-		<ul class="footer_section">
-		  <li><strong>Навигация</strong></li>
-		  <li><a href="index.html">Главное</a></li>
-		  <li><a href="quran.html">Коран</a></li>
-		  <li><a href="stait.html">Статья</a></li>
-		  <li><a href="about.html">О нас</a></li>
-		  <li><a href="developers.html">Разработчики</a></li>
-		  <li><a href="updates.html">Обновления продукта</a></li>
-		  <li><a href="feedback.html">Обратная связь</a></li>
-		  <li><a href="help.html">Помощь</a></li>
-		</ul>
-
-		<ul class="footer_section">
-		  <li><strong>Популярные суры</strong></li>
-		  <li><a href="suras/quran.htmlsur1.xml">Аль-Фатиха</a></li>
-		  <li><a href="sur2.html">Аль-Бакара</a></li>
-		  <li><a href="sur18.html">Аль-Кахф</a></li>
-		  <li><a href="sur36.html">Ясин</a></li>
-		  <li><a href="sur55.html">Ар-Рахман</a></li>
-		  <li><a href="sur56.html">Аль-Вакиа</a></li>
-		  <li><a href="sur67.html">Аль-Мульк</a></li>
-		  <li><a href="sura_kursi.html">Аятуль Курси</a></li>
-		</ul>
-
-		<ul class="footer_section">
-		  <li><strong>Наши проекты</strong></li>
-		  <li><a href="index.html">NurSite</a></li>
-		  <li><a href="nurapp.html">NurApp</a></li>
-		</ul>
-	  </nav>
-
-	  <div class="footer_social">
-		<img class="footer_social-icon" src="icon/telegram_logo"  alt="telegram"> <a href="https://t.me/vuittonere" ></a>
-		<img class="footer_social-icon" src="icon/youtube_logo"  alt="youtube"> <a href="#" ></a>
-		<img class="footer_social-icon" src="icon/tiktok_logo"  alt="tiktok"> <a href="#" ></a>
-	  </div>
-
-	  <div class="footer_copy">
-		© 04.2025–05.2025 NurSite. Все права защищены.
-	  </div>
-	</div>
-  </footer>
+	</footer>
 </html>
