@@ -116,11 +116,6 @@ header nav ul li.btn a:hover {
   background: #a38;
 }
 
-@media (max-width: 768px) {
-  header.container nav ul {
-    gap: 15px;
-  }
-} /* Закрыт медиа-запрос */
 
 .hero {
   padding-bottom: 100px;
