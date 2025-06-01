@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль</title>
+    <link href="css/styles.css" rel="stylesheet">
+    <script defer src="theme.js"></script>
+    <style>
+        /* Основные стили */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .profile-container {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 360px;
+            text-align: center;
+        }
+
+        .profile-header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            font-size: 24px;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-top: -60px;
+            border: 6px solid #fff;
+            object-fit: cover;
+        }
+
+        .profile-details {
+            padding: 20px;
+            color: #333;
+        }
+
+        .profile-actions {
+            display: flex;
+            justify-content: space-evenly;
+            padding: 20px;
+            background-color: #ecf0f1;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Для мобильных устройств */
+        @media (max-width: 768px) {
+            .profile-container {
+                width: 100%;
+                margin: 10px;
+            }
+        }
+
+        /* Стиль для меню */
+        .menu-list {
+            display: flex;
+            justify-content: space-around;
+            padding: 0;
+            list-style: none;
+        }
+
+        .menu-list li {
+            padding: 10px;
+        }
+
+        /* Для мобильных устройств, гамбургер меню */
+        .side-menu {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .side-menu {
+                display: block;
+            }
+        }
+
+        .hamburger-btn {
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            Профиль пользователя
+        </div>
+
+        <img src="https://via.placeholder.com/120" alt="Фото пользователя" class="profile-img">
+
+        <div class="profile-details">
+            <h2>Имя (например:фрет)</h2>
+            <p>Он (пользователь, админ, разработчик)</p>
+            <p>Имя пользователя (например: @fret_fretov)</p>
+        </div>
+
+        <div class="profile-actions">
+            <button class="btn" id="editProfile">Редактировать</button>
+        </div>
+    </div>
+
+    <!-- Темная/светлая тема -->
+    <button id="themeToggleBtn" class="btn" style="position: fixed; bottom: 20px; right: 20px;">Переключить тему</button>
+
+    <script>
+        // Переключение темы
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer_contacts">
+                <span class="logo">NurSite</span>
+                <a class="footer_link-mail" href="mailto:nursite.com@gmail.com">support@nursite.com</a>
+            </div>
+            <nav class="footer_nav">
+                <ul class="footer_section">
+                    <li><strong>Навигация</strong></li>
+                    <li><a href="index.html">Главное</a></li>
+                    <li><a href="quran.html">Коран</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="developers.html">Разработчики</a></li>
+                    <li><a href="feedback.html">Обновления продуктов</a></li>
+                    <li><a href="help.html">Помощь</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+</html>
