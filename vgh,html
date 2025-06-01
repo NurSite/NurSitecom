@@ -1,0 +1,44 @@
+<header class="fixed top-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-md z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-14">
+      
+      <!-- Меню гамбургер -->
+      <button id="burger-menu" aria-label="Меню" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M0 19.5h23.25v-2.584H0zm0-6.459h23.25V10.46H0zM0 4v2.584h23.25V4z"></path>
+        </svg>
+      </button>
+
+      <!-- Поисковая строка -->
+      <form action="/search" method="GET" class="flex flex-grow mx-4 max-w-3xl">
+        <input 
+          type="search" 
+          name="q" 
+          placeholder="Поиск..." 
+          class="w-full rounded-l-md border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          aria-label="Поиск"
+        />
+        <button type="submit" aria-label="Искать" class="bg-indigo-600 hover:bg-indigo-700 rounded-r-md px-3 flex items-center justify-center text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <path d="m23.5 21.466-7.01-7.01a9.07 9.07 0 0 0 1.736-5.343C18.226 4.088 14.138 0 9.113 0S0 4.088 0 9.113s4.088 9.113 9.113 9.113a9.07 9.07 0 0 0 5.343-1.735l7.01 7.009zM9.113 15.348a6.236 6.236 0 1 1 6.235-6.235 6.243 6.243 0 0 1-6.235 6.235"></path>
+          </svg>
+        </button>
+      </form>
+
+      <!-- Кнопка настроек -->
+      <button id="open-settings" aria-label="Настройки" class="ml-4 text-gray-700 dark:text-gray-300 hover:text-indigo-600 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12.32 7.582a4.044 4.044 0 1 0 4.044 4.043 4.056 4.056 0 0 0-4.043-4.043m8.73 4.043q-.003.567-.082 1.13l2.46 1.926a.586.586 0 0 1 .134.747l-2.328 4.02a.59.59 0 0 1-.715.248l-2.894-1.162a9 9 0 0 1-1.962 1.146l-.433 3.072a.6.6 0 0 1-.581.498H9.993a.61.61 0 0 1-.582-.482l-.433-3.072a8.6 8.6 0 0 1-1.962-1.147l-2.893 1.163a.59.59 0 0 1-.715-.249L1.08 15.445a.586.586 0 0 1 .133-.748l2.46-1.926a9 9 0 0 1-.082-1.146q.003-.567.083-1.13L1.213 8.57a.586.586 0 0 1-.133-.747l2.328-4.02a.59.59 0 0 1 .715-.248l2.893 1.162A9 9 0 0 1 8.978 3.57L9.411.498A.6.6 0 0 1 9.993 0h4.656a.61.61 0 0 1 .582.482l.432 3.072A8.6 8.6 0 0 1 17.628 4.7l2.89-1.163a.59.59 0 0 1 .716.249l2.328 4.019a.586.586 0 0 1-.133.747l-2.461 1.927q.078.57.083 1.145"></path>
+        </svg>
+      </button>
+
+      <!-- Кнопка профиля -->
+      <a href="profil.html" aria-label="Профиль" class="ml-4 text-gray-700 dark:text-gray-300 hover:text-indigo-600 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-6 h-6 fill-current">
+          <path d="M256 73.825c-100.613 0-182.18 81.562-182.18 182.17a182.18 182.18 0 0 0 364.36 0c0-100.608-81.572-182.17-182.18-182.17zm.553 268.12h-78.93c0-56.91 49.98-56.901 61.07-71.773l1.27-6.793c-15.582-7.893-26.582-26.939-26.582-49.201 0-29.33 19.081-53.122 42.619-53.122 23.532 0 42.61 23.793 42.61 53.122 0 22.078-10.802 41-26.175 49.017l1.442 7.716c12.172 14.16 60.486 15.082 60.486 71.034z"/>
+        </svg>
+      </a>
+
+    </div>
+  </div>
+</header>
