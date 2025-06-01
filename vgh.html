@@ -6,126 +6,98 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/styles.css" rel="stylesheet">
 	  <script defer src="theme.js"></script>
+	  <script src="https://cdn.tailwindcss.com"></script>
+
 	  
 	<title>NurSite-сайт для изучение Корана</title>
   </head>
   <body>
   <!--СЕКЦИЯ HEADER  -->
-	<header class="container">
-	  <!-- Кнопка гамбургера -->
-	  <button id="hamburgerBtn" aria-label="Меню" class="hamburger-btn">☰ Меню</button>
-	<!-- Выдвижное меню настроек (как на Quran.com) -->
-<div id="settings-drawer" class="settings-drawer hidden fixed top-0 right-0 w-80 h-full bg-white dark:bg-gray-900 shadow-lg z-50 transition-transform transform translate-x-full">
-  <div class="flex items-center justify-between p-4 border-b dark:border-gray-700">
-    <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Настройки</h2>
-    <button id="close-settings" class="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white text-2xl">&times;</button>
-  </div>
-
-  <div class="p-4 space-y-6">
-    <!-- Переключение темы -->
-    <div>
-      <label class="block text-gray-700 dark:text-gray-300 mb-2">Тема</label>
-      <select id="theme-select" class="w-full p-2 border rounded dark:bg-gray-800 dark:border-gray-600 dark:text-white">
-        <option value="system">Системная</option>
-        <option value="light">Светлая</option>
-        <option value="dark">Тёмная</option>
-      </select>
-    </div>
-
-    <!-- Размер шрифта -->
-    <div>
-      <label class="block text-gray-700 dark:text-gray-300 mb-2">Размер шрифта</label>
-      <input id="font-size-slider" type="range" min="14" max="24" value="18" class="w-full">
-    </div>
-
-    <!-- Отображение тафсира -->
-    <div class="flex items-center justify-between">
-      <span class="text-gray-700 dark:text-gray-300">Показать тафсир</span>
-      <input id="toggle-tafsir" type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 dark:text-indigo-400">
-    </div>
-
-    <!-- Предпочтительный перевод -->
-    <div>
-      <label class="block text-gray-700 dark:text-gray-300 mb-2">Перевод</label>
-      <select id="translation-select" class="w-full p-2 border rounded dark:bg-gray-800 dark:border-gray-600 dark:text-white">
-        <option value="russian-kuliev">Кулиев</option>
-        <option value="russian-al-muntahab">Аль-Мунтахаб</option>
-        <!-- Добавь другие переводы при необходимости -->
-      </select>
-    </div>
-  </div>
-</div>
-
-<!-- Кнопка в хедере для открытия настроек -->
-<button id="open-settings" class="text-xl px-4 py-2 text-white bg-indigo-600 hover:bg-indigo-700 rounded fixed top-4 right-4 z-50">
-  ⚙️
-</button>
-
-<style>
-  .settings-drawer.hidden {
-    transform: translateX(100%);
-  }
-  .settings-drawer.show {
-    transform: translateX(0);
-  }
-</style>
-
-<script>
-  const openSettings = document.getElementById('open-settings');
-  const closeSettings = document.getElementById('close-settings');
-  const drawer = document.getElementById('settings-drawer');
-
-  openSettings.addEventListener('click', () => {
-    drawer.classList.remove('hidden');
-    drawer.classList.add('show');
-  });
-
-  closeSettings.addEventListener('click', () => {
-    drawer.classList.remove('show');
-    drawer.classList.add('hidden');
-  });
-</script>
-    <header class="fixed top-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-md z-50">
+	<header class="fixed top-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-md z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-14">
-      
-      <!-- Меню гамбургер -->
-      <button id="burger-menu" aria-label="Меню" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 focus:outline-none">
+
+      <!-- Левая часть (гамбургер) -->
+      <button class="md:hidden text-gray-700 dark:text-gray-300 hover:text-indigo-600 focus:outline-none">
+        <!-- Гамбургер SVG -->
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
           <path d="M0 19.5h23.25v-2.584H0zm0-6.459h23.25V10.46H0zM0 4v2.584h23.25V4z"></path>
         </svg>
       </button>
 
-      <!-- Поисковая строка -->
-      <form action="/search" method="GET" class="flex flex-grow mx-4 max-w-3xl">
+      <!-- Центр (поиск) -->
+      <div class="flex-1 mx-4 hidden md:flex items-center bg-gray-100 dark:bg-gray-800 rounded-md">
         <input 
-          type="search" 
-          name="q" 
-          placeholder="Поиск..." 
-          class="w-full rounded-l-md border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          aria-label="Поиск"
-        />
-        <button type="submit" aria-label="Искать" class="bg-indigo-600 hover:bg-indigo-700 rounded-r-md px-3 flex items-center justify-center text-white">
+          type="text" placeholder="Поиск..."
+          class="w-full px-4 py-2 bg-transparent text-gray-900 dark:text-gray-100 focus:outline-none"
+        >
+       <button id="mobile-search-toggle" class="md:hidden">
+          <!-- Лупа -->
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
             <path d="m23.5 21.466-7.01-7.01a9.07 9.07 0 0 0 1.736-5.343C18.226 4.088 14.138 0 9.113 0S0 4.088 0 9.113s4.088 9.113 9.113 9.113a9.07 9.07 0 0 0 5.343-1.735l7.01 7.009zM9.113 15.348a6.236 6.236 0 1 1 6.235-6.235 6.243 6.243 0 0 1-6.235 6.235"></path>
           </svg>
         </button>
-      </form>
+      </div>
+	    <div id="mobile-search" class="mobile-search absolute top-14 left-0 w-full px-4 py-2 bg-white dark:bg-gray-800">
+  <input type="text" placeholder="Поиск..." class="w-full p-2 border rounded-md dark:bg-gray-700 dark:text-white" />
+</div>
 
-      <!-- Кнопка настроек -->
-      <button id="open-settings" aria-label="Настройки" class="ml-4 text-gray-700 dark:text-gray-300 hover:text-indigo-600 focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12.32 7.582a4.044 4.044 0 1 0 4.044 4.043 4.056 4.056 0 0 0-4.043-4.043m8.73 4.043q-.003.567-.082 1.13l2.46 1.926a.586.586 0 0 1 .134.747l-2.328 4.02a.59.59 0 0 1-.715.248l-2.894-1.162a9 9 0 0 1-1.962 1.146l-.433 3.072a.6.6 0 0 1-.581.498H9.993a.61.61 0 0 1-.582-.482l-.433-3.072a8.6 8.6 0 0 1-1.962-1.147l-2.893 1.163a.59.59 0 0 1-.715-.249L1.08 15.445a.586.586 0 0 1 .133-.748l2.46-1.926a9 9 0 0 1-.082-1.146q.003-.567.083-1.13L1.213 8.57a.586.586 0 0 1-.133-.747l2.328-4.02a.59.59 0 0 1 .715-.248l2.893 1.162A9 9 0 0 1 8.978 3.57L9.411.498A.6.6 0 0 1 9.993 0h4.656a.61.61 0 0 1 .582.482l.432 3.072A8.6 8.6 0 0 1 17.628 4.7l2.89-1.163a.59.59 0 0 1 .716.249l2.328 4.019a.586.586 0 0 1-.133.747l-2.461 1.927q.078.57.083 1.145"></path>
-        </svg>
-      </button>
+      <!-- Правая часть -->
+      <div class="flex items-center space-x-4">
 
-      <!-- Кнопка профиля -->
-      <a href="profil.html" aria-label="Профиль" class="ml-4 text-gray-700 dark:text-gray-300 hover:text-indigo-600 focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-6 h-6 fill-current">
-          <path d="M256 73.825c-100.613 0-182.18 81.562-182.18 182.17a182.18 182.18 0 0 0 364.36 0c0-100.608-81.572-182.17-182.18-182.17zm.553 268.12h-78.93c0-56.91 49.98-56.901 61.07-71.773l1.27-6.793c-15.582-7.893-26.582-26.939-26.582-49.201 0-29.33 19.081-53.122 42.619-53.122 23.532 0 42.61 23.793 42.61 53.122 0 22.078-10.802 41-26.175 49.017l1.442 7.716c12.172 14.16 60.486 15.082 60.486 71.034z"/>
-        </svg>
-      </a>
+        <!-- Кнопка поиска на мобилке -->
+        <button class="md:hidden text-gray-700 dark:text-gray-300 hover:text-indigo-600 focus:outline-none">
+          <!-- Лупа -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <path d="m23.5 21.466-7.01-7.01a9.07 9.07 0 0 0 1.736-5.343C18.226 4.088 14.138 0 9.113 0S0 4.088 0 9.113s4.088 9.113 9.113 9.113a9.07 9.07 0 0 0 5.343-1.735l7.01 7.009zM9.113 15.348a6.236 6.236 0 1 1 6.235-6.235 6.243 6.243 0 0 1-6.235 6.235"></path>
+          </svg>
+        </button>
+	     
 
+        <!-- Настройки -->
+        <button id="open-settings" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 focus:outline-none">
+          <!-- Шестерёнка -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.32 7.582a4.044 4.044 0 1 0 4.044 4.043 4.056 4.056 0 0 0-4.043-4.043m8.73 4.043q-.003.567-.082 1.13l2.46 1.926a.586.586 0 0 1 .134.747l-2.328 4.02a.59.59 0 0 1-.715.248l-2.894-1.162a9 9 0 0 1-1.962 1.146l-.433 3.072a.6.6 0 0 1-.581.498H9.993a.61.61 0 0 1-.582-.482l-.433-3.072a8.6 8.6 0 0 1-1.962-1.147l-2.893 1.163a.59.59 0 0 1-.715-.249L1.08 15.445a.586.586 0 0 1 .133-.748l2.46-1.926a9 9 0 0 1-.082-1.146q.003-.567.083-1.13L1.213 8.57a.586.586 0 0 1-.133-.747l2.328-4.02a.59.59 0 0 1 .715-.248l2.893 1.162A9 9 0 0 1 8.978 3.57L9.411.498A.6.6 0 0 1 9.993 0h4.656a.61.61 0 0 1 .582.482l.432 3.072A8.6 8.6 0 0 1 17.628 4.7l2.89-1.163a.59.59 0 0 1 .716.249l2.328 4.019a.586.586 0 0 1-.133.747l-2.461 1.927q.078.57.083 1.145"></path>
+          </svg>
+        </button>
+
+        <!-- Профиль -->
+        <a href="profil.html" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 focus:outline-none">
+          <!-- До входа (или меняется после авторизации) -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 512 512">
+            <path d="M256 73.82c-100.613 0-182.18 81.571-182.18 182.171C73.82 356.61 155.387 438.18 256 438.18c100.608 0 182.18-81.57 182.18-182.188 0-100.608-81.572-182.17-182.18-182.17zm0 71.833a55.05 55.05 0 1 1-55.055 55.055A55.053 55.053 0 0 1 256 145.653zm22.703 186.328v22.386h-103.03c0-54.255 29.518-73.555 48.88-90.888a65.738 65.738 0 0 0 62.886 0c8.674 7.761 19.37 15.926 28.555 27.449h-8.837v28.45h-28.454zm89.437 19.934h-28.455v28.441h-19.929v-28.44h-28.45V331.98h28.45v-28.45h19.929v28.45h28.446v19.934z"/>
+          </svg>
+        </a>
+
+      </div>
     </div>
   </div>
+		<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          primary: '#6366f1', // indigo-500
+        }
+      }
+    }
+  }
+</script>
+<script>
+  document.getElementById('open-settings').addEventListener('click', () => {
+    document.getElementById('settings-drawer').classList.remove('drawer-closed');
+    document.getElementById('settings-drawer').classList.add('drawer-open');
+  });
+</script>
+<script>
+  const searchToggle = document.getElementById('mobile-search-toggle');
+  const searchBlock = document.getElementById('mobile-search');
+
+  searchToggle?.addEventListener('click', () => {
+    searchBlock?.classList.toggle('active');
+  });
+</script>
+
 </header>
