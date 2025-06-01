@@ -77,75 +77,19 @@ header .logo {
   font-weight: 800;
 }
 
-/* Навигация в шапке (десктоп) */
-.top-nav {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  background: var(--bg-color);
-  color: var(--text-color);
-}
-
-header nav ul {  
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  z-index: 2;
-}
-
-header nav ul li a {
-  text-decoration: none;
-  color: #DB7;
-  padding: 5px 10px;
-}
-
-header nav ul li.active::after {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 5px;
-  background: #ab9;
-  border-radius: 10px;
-  position: relative;
-  top: 10px;
-}
-
-header nav ul li:not(.active):not(.btn) a:hover {
-  border-bottom: 5px solid #a97;
-}
-
-header nav ul li.btn a,
-header nav ul li.theme-toggle a {
-  background: #648;
-  padding: 9px 17px;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 20px;
-  transition: all 500ms ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-}
-
-header nav ul li.btn a:hover,
-header nav ul li.theme-toggle a:hover {
-  background: #a38;
-  cursor: pointer;
-  text-decoration: none;
-}
-
+/* Гамбургер-кнопка - отображается на всех устройствах */
 .hamburger-btn {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   background: none;
   border: none;
-  color: var(--text-color);
+  color: var(--header-text);
   cursor: pointer;
   z-index: 1001;
+  display: block;
+}
+
+/* Скрываем классическое горизонтальное меню, если оно есть */
+header nav {
   display: none;
 }
 
@@ -214,24 +158,6 @@ header nav ul li.theme-toggle a:hover {
 .menu-list a:hover,
 .projects a:hover {
   color: var(--link-color);
-}
-
-/* Горизонтальное меню */
-.menu-list--horizontal {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-}
-
-.small-text {
-  font-size: 0.8rem;
-  color: var(--text-color);
-  margin-bottom: 0.5rem;
-}
-
-.brand {
-  color: #e63946;
 }
 
 /* MAIN CONTENT */
@@ -304,81 +230,6 @@ header nav ul li.theme-toggle a:hover {
 
 .btn:hover {
   background-color: var(--button-hover);
-}
-
-/* HERO SECTION */
-.hero {
-  padding-bottom: 100px;
-  position: relative;
-  z-index: 1;
-}
-
-.hero--info {
-  width: 320px;
-  padding-top: 20px;
-}
-
-.hero--info h1 {
-  font-size: 30px;
-  font-weight: 400;
-}
-
-.hero--info p {
-  font-weight: 200;
-  line-height: 140%;
-  margin: 20px 10px;
-}
-
-.hero--info .btn {
-  background: #a97;
-  color: #fff;
-  border-radius: 100px;
-  padding: 30px 45px;
-  border: 0;
-  transition: all 500ms ease;
-  font-size: 20px;
-}
-
-.hero--info .btn:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-}
-
-.hero img {
-  position: absolute;
-  top: -150px;
-  right: 0;
-}
-
-.surah-list {
-  column-count: 2;
-  padding: 20px;
-  list-style: none;
-}
-
-.surah-list li {
-  border: 2px dashed #ff0000;
-  margin-bottom: 20px;
-  break-inside: avoid;
-}
-
-.surah-list a {
-  text-decoration: none;
-  color: #2d3436;
-  padding: 8px;
-  display: block;
-  border-radius: 4px;
-  transition: background 0.3s;
-}
-
-.surah-list a:hover {
-  background: #A97;
-}
-
-@media (max-width: 768px) {
-  .surah-list {
-    column-count: 1;
-  }
 }
 
 /* FOOTER */
@@ -484,3 +335,38 @@ header nav ul li.theme-toggle a:hover {
   width: 24px;
   height: 24px;
   margin: 0 5px;
+  vertical-align: middle;
+}
+
+.footer_copy {
+  flex-basis: 100%;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .footer {
+    padding: 20px 0;
+  }
+
+  .footer_nav {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .footer_nav .footer_section {
+    margin-bottom: 20px;
+  }
+
+  .footer_contacts {
+    text-align: center;
+  }
+
+  .footer_copy {
+    margin-top: 20px;
+  }
+}
