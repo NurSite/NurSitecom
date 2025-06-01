@@ -14,24 +14,109 @@
 	<header class="container">
 	  <!-- Кнопка гамбургера -->
 	  <button id="hamburgerBtn" aria-label="Меню" class="hamburger-btn">☰ Меню</button>
+	<!-- Выдвижное меню настроек (как на Quran.com) -->
+<div id="settings-drawer" class="settings-drawer hidden fixed top-0 right-0 w-80 h-full bg-white dark:bg-gray-900 shadow-lg z-50 transition-transform transform translate-x-full">
+  <div class="flex items-center justify-between p-4 border-b dark:border-gray-700">
+    <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Настройки</h2>
+    <button id="close-settings" class="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white text-2xl">&times;</button>
+  </div>
+
+  <div class="p-4 space-y-6">
+    <!-- Переключение темы -->
+    <div>
+      <label class="block text-gray-700 dark:text-gray-300 mb-2">Тема</label>
+      <select id="theme-select" class="w-full p-2 border rounded dark:bg-gray-800 dark:border-gray-600 dark:text-white">
+        <option value="system">Системная</option>
+        <option value="light">Светлая</option>
+        <option value="dark">Тёмная</option>
+      </select>
+    </div>
+
+    <!-- Размер шрифта -->
+    <div>
+      <label class="block text-gray-700 dark:text-gray-300 mb-2">Размер шрифта</label>
+      <input id="font-size-slider" type="range" min="14" max="24" value="18" class="w-full">
+    </div>
+
+    <!-- Отображение тафсира -->
+    <div class="flex items-center justify-between">
+      <span class="text-gray-700 dark:text-gray-300">Показать тафсир</span>
+      <input id="toggle-tafsir" type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 dark:text-indigo-400">
+    </div>
+
+    <!-- Предпочтительный перевод -->
+    <div>
+      <label class="block text-gray-700 dark:text-gray-300 mb-2">Перевод</label>
+      <select id="translation-select" class="w-full p-2 border rounded dark:bg-gray-800 dark:border-gray-600 dark:text-white">
+        <option value="russian-kuliev">Кулиев</option>
+        <option value="russian-al-muntahab">Аль-Мунтахаб</option>
+        <!-- Добавь другие переводы при необходимости -->
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- Кнопка в хедере для открытия настроек -->
+<button id="open-settings" class="text-xl px-4 py-2 text-white bg-indigo-600 hover:bg-indigo-700 rounded fixed top-4 right-4 z-50">
+  ⚙️
+</button>
+
+<style>
+  .settings-drawer.hidden {
+    transform: translateX(100%);
+  }
+  .settings-drawer.show {
+    transform: translateX(0);
+  }
+</style>
+
+<script>
+  const openSettings = document.getElementById('open-settings');
+  const closeSettings = document.getElementById('close-settings');
+  const drawer = document.getElementById('settings-drawer');
+
+  openSettings.addEventListener('click', () => {
+    drawer.classList.remove('hidden');
+    drawer.classList.add('show');
+  });
+
+  closeSettings.addEventListener('click', () => {
+    drawer.classList.remove('show');
+    drawer.classList.add('hidden');
+  });
+</script>
+
 
 	  <!-- Меню сбоку -->
 	  <nav id="sideMenu" class="side-menu">
 		<div class="donate-box">
-		  <h3>Стать ежемесячным донором</h3>
+		  <h1>Стать ежемесячным донатером</h1>
 		  <p>Ежемесячные пожертвования помогают нам улучшить и поддерживать работу...</p>
 		  <a href="donate.html" class="donate-btn">Пожертвовать Ежемесячно</a>
-		  <a href="about.html">Узнать больше</a>
+		  <a href="donate.html">Узнать больше</a>
 		</div>
-
+		  
+		  <div>
+	           <h2>📖 Основные страницы</h2>
 		<ul class="menu-list">
-		  <li><a href="index.html">Дом</a></li>
-	          <li><a href="quran.html">Коран</a></li>
-		  <li><a href="about.html">О нас</a></li>
-		  <li><a href="developers.html">Разработчики</a></li>
-		  <li><a href="feedback.html">Обновления продуктов</a></li>
-		  <li><a href="help.html">Помощь</a></li>
+		<li><a href="index.html">🏠 Главная</a></li>
+		<li><a href="quran.html">📖 Коран</a></li>
+		<li><a href="daily.html">📅 Аят дня</a></li>
+	        <li><a href="stait.html">📚 Статья / Обзор</a></li>
+		<li><a href="about.html">🌐 О проекте</a></li>
+			<li><a href="updates.html">🧭 Обновления</a></li>
+			<h3>⚙️ Пользователь</h3>
+			<li><a href="profil.html">👤 Профиль</a></li>
+			<li><a href="register.html">🔐 Вход / Регистрация</a></li>
+			<h4>💬 Обратная связь</h4>
+			<li><a href="help.html">🛠️ Помощь</a></li>
+      <li><a href="feedback.html">✉️ Отзыв</a></li>
+			<h5>💖 Поддержка</h5>
+      <li><a href="donate.html">🤝 Поддержка</a></li>
+			<h6>👥 Разработчики</h6>
+      <li><a href="developers.html">👨‍💻 Разработчики</a></li>
 		</ul>
+		  </div>
 
 		<div class="projects">
 		  <h4>НАШИ ПРОЕКТЫ</h4>
