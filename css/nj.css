@@ -1,0 +1,744 @@
+/* === Основные цвета по умолчанию (light) === */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --link-color: #1a0dab;
+  --footer-bg: #f2f2f2;
+  --footer-text: #333;
+  --footer-heading: #111;
+  --footer-logo: #000;
+
+  /* Дополнительные переменные для профиля, меню и кнопок */
+  --card-bg: #ffffff;
+  --card-footer: #ecf0f1;
+  --header-bg: #2c3e50;
+  --header-text: #ffffff;
+  --button-bg: #3498db;
+  --button-hover: #2980b9;
+  --text-muted: #7f8c8d;
+}
+
+/* === Тёмная тема === */
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #eeeeee;
+  --link-color: #8ab4f8;
+  --footer-bg: #1a1a1a;
+  --footer-text: #eee;
+  --footer-heading: #fff;
+  --footer-logo: #fff;
+
+  /* Переопределение для профиля, меню и кнопок */
+  --card-bg: #2c2c2c;
+  --card-footer: #3a3a3a;
+  --header-bg: #111111;
+  --header-text: #ffffff;
+  --button-bg: #506d85;
+  --button-hover: #405671;
+  --text-muted: #aaaaaa;
+}
+
+/* === Сброс отступов/блоков и базовые правила === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* === Контейнеры === */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* === HEADER === */
+header {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 100;
+}
+
+/* Логотип или название сайта в шапке */
+header .logo {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--header-text);
+  text-transform: uppercase;
+}
+
+/* === Бургер-кнопка (всегда отображается) === */
+.hamburger-btn {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--header-text);
+  cursor: pointer;
+  z-index: 101;
+  display: block;
+}
+
+/* Скрываем классическое горизонтальное меню, если оно было */
+header nav {
+  display: none;
+}
+
+/* === Боковое меню (по клику на бургер) === */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 85%;
+  max-width: 320px;
+  height: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding: 1.5rem;
+  transition: left 0.3s ease;
+  overflow-y: auto;
+}
+
+.side-menu.active {
+  left: 0;
+}
+
+/* Блок с призывом к донату внутри меню */
+.donate-box {
+  background: #eafafc;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.donate-btn {
+  display: inline-block;
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  background: black;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.donate-btn:hover {
+  background: #333;
+}
+
+/* Список пунктов меню */
+.menu-list,
+.projects ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-list li,
+.projects li {
+  margin: 0.75rem 0;
+}
+
+.menu-list a,
+.projects a {
+  color: var(--text-color);
+  transition: color 0.2s;
+}
+
+.menu-list a:hover,
+.projects a:hover {
+  color: var(--link-color);
+}
+
+/* Вертикальное меню по умолчанию */
+.menu-list {
+  margin-bottom: 1rem;
+}
+
+/* Горизонтальный вариант меню (опционально для больших экранов) */
+.menu-list--horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* Названия разделов «Наши проекты» */
+.projects h4 {
+  margin: 1rem 0 0.5rem;
+  font-size: 18px;
+}
+
+.small-text {
+  font-size: 0.8rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.brand {
+  color: #e63946;
+}
+
+/* === MAIN CONTENT === */
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Карточка профиля */
+.profile-container {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.profile-header {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  padding: 20px;
+  font-size: 24px;
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-top: -60px;
+  border: 6px solid var(--card-bg);
+  object-fit: cover;
+}
+
+.profile-details {
+  padding: 20px;
+}
+
+.profile-details h2 {
+  margin: 10px 0;
+  font-size: 22px;
+}
+
+.profile-details p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: var(--text-muted);
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: var(--card-footer);
+}
+
+.btn {
+  background-color: var(--button-bg);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--button-hover);
+}
+
+/* === HERO / Knowledge / Daily Sections === */
+.hero {
+  padding-bottom: 100px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero--info {
+  width: 320px;
+  padding-top: 20px;
+}
+
+.hero--info h1 {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.hero--info p {
+  font-weight: 200;
+  line-height: 140%;
+  margin: 20px 10px;
+}
+
+.hero--info .btn {
+  background: #a97;
+  color: #fff;
+  border-radius: 100px;
+  padding: 30px 45px;
+  border: 0;
+  transition: all 500ms ease;
+  font-size: 20px;
+}
+
+.hero--info .btn:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.hero img {
+  position: absolute;
+  top: -150px;
+  right: 0;
+}
+
+.knowledge-section {
+  padding: 40px 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.section-title {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  width: 90%;
+  margin: auto;
+}
+
+.article-card {
+  background: #f4f4f4;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+}
+
+.article-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.article-card p {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.article-card a {
+  color: #00695c;
+  font-weight: bold;
+}
+
+.daily-learn-section {
+  padding: 40px 0;
+  background: var(--bg-color);
+  text-align: center;
+}
+
+.daily-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.daily-card {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.daily-card:hover {
+  transform: scale(1.05);
+}
+
+.daily-card h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.daily-card p {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.btn-day {
+  display: inline-block;
+  background: #a97;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.btn-day:hover {
+  background: #648;
+}
+
+.streak-info {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.dark-mode .streak-info {
+  color: #ccc;
+}
+
+.all-daily-days {
+  padding: 40px 20px;
+}
+
+.daily-list {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.daily-list li {
+  margin-bottom: 15px;
+}
+
+.daily-list a {
+  font-size: 18px;
+  color: #4a4a4a;
+  border-bottom: 1px dashed #a97;
+  padding-bottom: 2px;
+}
+
+.daily-list a:hover {
+  color: #648;
+}
+
+/* === Кнопка «Поддержка» сбоку === */
+.floating-support-btn {
+  position: fixed;
+  right: 15px;
+  bottom: 40%;
+  background-color: #648;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px 0 0 10px;
+  font-size: 16px;
+  text-decoration: none;
+  z-index: 9999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.2s ease;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.floating-support-btn:hover {
+  background-color: #a38;
+  transform: scale(1.05);
+}
+
+/* === Стили для About-страницы === */
+.about-hero {
+  background: linear-gradient(135deg, #f3f4f6, #d1d5db);
+  padding: 60px 0;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+[data-theme="dark"] .about-hero {
+  background: linear-gradient(135deg, #1f2937, #111827);
+}
+
+.about-hero h1 {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.about-hero p {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 15px auto 0;
+  line-height: 1.6;
+  color: inherit;
+}
+
+/* === Секции контента main.container === */
+main.container section {
+  margin-bottom: 40px;
+}
+
+main.container h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: inherit;
+}
+
+main.container p,
+main.container ul li {
+  font-size: 20px;
+  line-height: 1.7;
+  color: inherit;
+}
+
+main.container ul {
+  padding-left: 25px;
+}
+
+main.container ul li {
+  list-style: disc;
+  margin-bottom: 10px;
+}
+
+/* === Ссылки === */
+a:hover {
+  text-decoration: underline;
+}
+
+[data-theme="dark"] a {
+  color: #8ab4f8;
+}
+
+/* === Стили для Streak-системы === */
+#streak-days {
+  font-weight: bold;
+  color: #009688; /* Зеленый цвет для мотивации */
+  font-size: 1.5rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Контейнер для текста Streak */
+.streak-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: auto;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Текст Streak */
+.streak-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #009688;
+  transition: color 0.3s;
+}
+
+.streak-text:hover {
+  color: #00796b;
+}
+
+/* Анимация для числа дней */
+#streak-days {
+  color: #ff9800;
+  font-size: 32px;
+  font-weight: bold;
+  transition: transform 0.3s ease-in-out;
+}
+
+#streak-days:hover {
+  transform: scale(1.2);
+}
+
+/* === FOOTER === */
+.footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 40px 0;
+  font-size: 18px;
+  border-top: 2px solid #444;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footer a {
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer_contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.footer_contacts .logo {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--footer-logo);
+}
+
+.footer_link-mail {
+  font-size: 18px;
+  color: #ccc;
+}
+
+.footer_nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.footer_section {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1 1 200px;
+}
+
+.footer_section li {
+  margin-bottom: 8px;
+}
+
+.footer_section li strong {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 15px;
+  color: var(--footer-heading);
+}
+
+.footer_section li a {
+  color: var(--text-color);
+  margin-bottom: 6px;
+}
+
+.footer_section li a:hover {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+.footer_social {
+  flex: 1 1 200px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.footer_social h1 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.footer_social p {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: var(--text-muted);
+}
+
+.footer_social-icon {
+  width: 24px;
+  height: 24px;
+  margin: 0 5px;
+  vertical-align: middle;
+}
+
+.footer_copy {
+  flex-basis: 100%;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* === Адаптивность === */
+@media (max-width: 768px) {
+  /* Бургер-кнопка и боковое меню видны, горизонтальное меню скрыто */
+  .top-nav {
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: block;
+  }
+
+  .side-menu {
+    display: block;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 20px 0;
+  }
+
+  .footer_nav {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .footer_nav .footer_section {
+    margin-bottom: 20px;
+  }
+
+  .footer_contacts {
+    text-align: center;
+  }
+
+  .footer_copy {
+    margin-top: 20px;
+  }
+
+  /* Streak */
+  .streak-text {
+    font-size: 20px;
+  }
+
+  #streak-days {
+    font-size: 28px;
+  }
+}
+
