@@ -5,7 +5,6 @@
   --link-color: #1a0dab;
   --footer-bg: #f2f2f2;
   --footer-text: #333;
-  --footer-heading: #111;
   --footer-logo: #000;
 }
 
@@ -26,11 +25,10 @@ body {
   color: var(--text-color);
 }
 
-a {
-  color: var(--link-color);
-}
+
 img {
-  max-width: 100%;
+  margin: 8px;
+  max-width: 48px;
 }
 
 .container {
@@ -54,10 +52,10 @@ header nav {
 
 header nav ul {  
   list-style: none;
-  display: flex;
   justify-content: space-between;
   z-index: 2;
   position: relative;
+  jostifiti-content: flex-start;
 }
 
 header nav ul li a{
@@ -279,7 +277,6 @@ header nav ul li.btn a:hover {
 @media (prefers-color-scheme: light) {
   :root {
     --footer-bg: #f2f2f2;
-    --footer-text: #333;
     --footer-heading: #111;
     --footer-logo: #000;
   }
@@ -540,6 +537,7 @@ a:hover {
 
 body.dark a {
   color: #8ab4f8;
+  
 }#streak-days {
   font-weight: bold;
   color: #009688; /* Зеленый цвет для мотивации */
@@ -550,7 +548,7 @@ body.dark a {
   display: flex;
   justify-content: center;  /* Центрирование по горизонтали */
   align-items: center;  /* Центрирование по вертикали */
-  min-height: 100vh;  /* Занимает всю высоту экрана */
+  min-height: 10px;  /* Занимает всю высоту экрана */
   background-color: var(--bg-light, #f9f9f9);  /* Фон для светлой темы */
   color: var(--text-light, #333);  /* Цвет текста для светлой темы */
   font-family: 'Segoe UI', sans-serif;  /* Шрифт */
@@ -733,22 +731,7 @@ body.dark #theme-toggle {
   margin: 1rem 0 0.5rem;
 }
 
-.donate-box {
-  background: #eafafc;
-  padding: 1rem;
-  border-radius: 12px;
-  margin-bottom: 1rem;
-}
 
-.donate-box .donate-btn {
-  display: inline-block;
-  margin: 0.5rem 0;
-  padding: 0.5rem 1rem;
-  background: black;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-}
 
 .menu-list, .projects ul {
   list-style: none;
@@ -780,25 +763,6 @@ body.dark #theme-toggle {
   color: #e63946;
 }
 
-/* Обычное верхнее меню видно на десктопе */
-.top-nav {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  padding: 1rem;
-  background: var(--bg-color);
-  color: var(--text-color);
-}
-
-.hamburger-btn, .side-menu {
-  display: none; /* скрыты по умолчанию */
-}
-
-/* На мобильных — показываем гамбургер, скрываем верхнее меню */
-@media (max-width: 768px) {
-  .top-nav {
-    display: none;
-  }
 
   .hamburger-btn {
      body {
